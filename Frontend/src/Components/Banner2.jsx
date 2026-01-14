@@ -2,21 +2,32 @@ import React from "react";
 
 const Banner2 = () => {
   return (
-    <div className="w-full text-center py-12 px-6">
+    <div className="w-full text-center py-12 px-6 bg-white">
       {/* Heading */}
-      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">
-        <span className="text-lime-600 font-semibold">15 years</span> of making change
+      <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
+        About the <span className="text-lime-600">Foundation</span>
       </h2>
 
       {/* Underline */}
-      <div className="w-12 h-[2px] bg-lime-500 mx-auto my-4"></div>
+      <div className="w-16 h-1 bg-lime-500 mx-auto mb-8 rounded-full"></div>
 
       {/* Description */}
-      <p className="text-gray-500 text-sm sm:text-base md:text-lg leading-relaxed">
-        <span className="font-semibold text-gray-800">School of Nature</span> is a non-profit organisation 
-        set up in 2010, with the belief in the conservation of Vasudha, which in Sanskrit means the Earth, 
-        the giver of wealth, and with the objective of promoting sustainable consumption of its bounties.
-      </p>
+      <div className="max-w-4xl mx-auto space-y-6 text-gray-600 text-base sm:text-lg leading-relaxed text-justify sm:text-center">
+        <p>
+          <span className="font-semibold text-gray-800">School of Nature Foundation (SONF)</span> is a
+          grassroots, non-profit organization working since 2020 to strengthen marginalized communities
+          through an integrated approach to education, women-led livelihood enterprises, and ecological conservation.
+          Rooted in community participation and guided by the Sustainable Development Goals (SDGs), and traditional
+          ecological knowledge, SONF works to build climate-resilient, just, and eco-sensitive communities.
+        </p>
+        <p>
+          India continues to face interconnected challenges, i.e., learning deficiency among children, low and
+          informal female workforce participation, and growing climate vulnerability in rural landscapes due to
+          development without preserving nature. These challenges disproportionately affect women and children from
+          marginalized communities due to their inherent vulnerabilities. SONF responds by addressing social,
+          economic, and ecological vulnerabilities together rather than in isolation.
+        </p>
+      </div>
     </div>
   );
 };

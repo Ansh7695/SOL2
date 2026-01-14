@@ -11,7 +11,7 @@ const Banner1 = () => {
   const slides = [
     {
       image: Assets.Ib1,
-      heading: "Welcome to Vasudha Foundation",
+      heading: "Welcome to School Of Nature",
       subheading: "Green ways for a good earth!",
     },
     {
@@ -34,7 +34,7 @@ const Banner1 = () => {
         pagination={{ clickable: true }}
         navigation
         loop
-        className="w-full h-[250px] sm:h-[350px] md:h-[500px] lg:h-[600px]"
+        className="w-full h-[250px] sm:h-[350px] md:h-[500px] lg:h-[650px]"
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>
