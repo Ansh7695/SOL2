@@ -4,6 +4,7 @@ import { useState } from 'react'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 import { Package } from 'lucide-react'
+import { backendUrl } from '../App'
 
 const Orders = ({ token }) => {
 
@@ -14,7 +15,7 @@ const Orders = ({ token }) => {
             return null;
         }
         try {
-            const response = await axios.post('http://localhost:4000/api/order/list', {}, { headers: { token } })
+            const response = await axios.post(backendUrl + '/api/order/list', {}, { headers: { token } })
             if (response.data.success) {
                 setOrders(response.data.orders.reverse())
             } else {
@@ -27,7 +28,7 @@ const Orders = ({ token }) => {
 
     const statusHandler = async (event, orderId) => {
         try {
-            const response = await axios.post('http://localhost:4000/api/order/status', { orderId, status: event.target.value }, { headers: { token } })
+            const response = await axios.post(backendUrl + '/api/order/status', { orderId, status: event.target.value }, { headers: { token } })
             if (response.data.success) {
                 await fetchAllOrders()
             }
