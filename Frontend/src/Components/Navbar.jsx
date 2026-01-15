@@ -34,7 +34,7 @@ const Navbar = () => {
         <ul className="hidden md:flex items-center gap-8 text-base font-medium tracking-wide text-gray-800">
           <Link to="/" className="hover:text-green-600 cursor-pointer">Home</Link>
           <Link to="/about-us" className="hover:text-green-600 cursor-pointer">About Us</Link>
-          <Link to="/marketplace" className="hover:text-green-600 cursor-pointer">Our Marketplace</Link>
+
 
           {/* Programs Dropdown */}
           <li className="relative group cursor-pointer h-full flex items-center hover:text-green-600">
@@ -54,6 +54,7 @@ const Navbar = () => {
             </div>
           </li>
           <Link to="/impact" className="hover:text-green-600 cursor-pointer">Impact At a Glance</Link>
+          <Link to="/marketplace" className="hover:text-green-600 cursor-pointer">Our Marketplace</Link>
         </ul>
 
         {/* Right Section */}

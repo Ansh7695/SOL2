@@ -1,5 +1,6 @@
 import orderModel from "../models/orderModel.js";
 import userModel from "../models/userModel.js";
+import { sendOrderEmails } from "./mailController.js";
 
 // Placing orders using COD Method
 const placeOrder = async (req, res) => {
@@ -20,6 +21,12 @@ const placeOrder = async (req, res) => {
         await newOrder.save();
 
         await userModel.findByIdAndUpdate(userId, { cartData: {} });
+
+        // Fetch user email to send confirmation
+        const user = await userModel.findById(userId);
+        if (user) {
+            await sendOrderEmails(newOrder, user.email);
+        }
 
         res.json({ success: true, message: "Order Placed" });
 

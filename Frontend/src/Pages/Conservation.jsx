@@ -6,12 +6,6 @@ import { Assets } from '../assets/Assets'
 
 const Conservation = () => {
 
-    // Placeholder - user should update with actual Conservation program images
-    const programImages = [
-        Assets.c1, Assets.c2, Assets.Ib3,
-        Assets.Ib1, Assets.Ib2, Assets.Ib3,
-    ];
-
     return (
         <div className="bg-white">
             <ProgramPageHeader
@@ -46,7 +40,6 @@ const Conservation = () => {
                         </p>
                     </div>
 
-                    <ProgramGallery images={programImages} />
 
                     {/* Apiculture */}
                     <div className="p-6 bg-yellow-50 rounded-xl border border-yellow-100">

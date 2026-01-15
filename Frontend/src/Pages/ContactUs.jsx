@@ -1,7 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import { Mail, Phone, MapPin } from "lucide-react";
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const ContactUs = () => {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        message: ''
+    });
+    const [loading, setLoading] = useState(false);
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+        try {
+            const response = await axios.post('http://localhost:4000/api/mail/contact', {
+                ...formData,
+                phone: "Not provided in form" // Optional update if phone field is added later
+            });
+
+            if (response.data.success) {
+                toast.success(response.data.message);
+                setFormData({ name: '', email: '', message: '' });
+            } else {
+                toast.error(response.data.message);
+            }
+        } catch (error) {
+            console.error(error);
+            toast.error("Failed to send message.");
+        } finally {
+            setLoading(false);
+        }
+    };
+
     return (
         <>
             <div className="max-w-7xl mx-auto py-16 px-6">
@@ -51,11 +87,15 @@ const ContactUs = () => {
                     {/* Contact Form */}
                     <div className="bg-white p-8 rounded-xl shadow-lg border border-gray-100">
                         <h3 className="text-2xl font-bold text-gray-800 mb-6 font-medium tracking-wide">Send us a Message</h3>
-                        <form className="space-y-5">
+                        <form onSubmit={handleSubmit} className="space-y-5">
                             <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
                                 <input
                                     type="text"
+                                    name="name"
+                                    value={formData.name}
+                                    onChange={handleChange}
+                                    required
                                     placeholder="John Doe"
                                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition"
                                 />
@@ -64,6 +104,10 @@ const ContactUs = () => {
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
                                 <input
                                     type="email"
+                                    name="email"
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    required
                                     placeholder="john@example.com"
                                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition"
                                 />
@@ -72,15 +116,20 @@ const ContactUs = () => {
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Message</label>
                                 <textarea
                                     rows="4"
+                                    name="message"
+                                    value={formData.message}
+                                    onChange={handleChange}
+                                    required
                                     placeholder="How can we help you?"
                                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition"
                                 ></textarea>
                             </div>
                             <button
                                 type="submit"
-                                className="w-full bg-lime-500 text-white font-bold py-3 rounded-lg hover:bg-lime-600 transition shadow-md hover:shadow-lg"
+                                disabled={loading}
+                                className={`w-full bg-lime-500 text-white font-bold py-3 rounded-lg hover:bg-lime-600 transition shadow-md hover:shadow-lg ${loading ? 'opacity-70 cursor-not-allowed' : ''}`}
                             >
-                                Send Message
+                                {loading ? 'Sending...' : 'Send Message'}
                             </button>
                         </form>
                     </div>
