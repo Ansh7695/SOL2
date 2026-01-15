@@ -23,20 +23,55 @@ const Login = ({ setToken }) => {
     }
 
     return (
-        <div className='min-h-screen flex items-center justify-center w-full'>
-            <div className='bg-white shadow-md rounded-lg px-8 py-6 max-w-md'>
-                <h1 className='text-2xl font-bold mb-4'>Admin Panel</h1>
-                <form onSubmit={onSubmitHandler}>
-                    <div className='mb-3 min-w-72'>
-                        <p className='text-sm font-medium text-gray-700 mb-2'>Email Address</p>
-                        <input onChange={(e) => setEmail(e.target.value)} value={email} className='rounded-md w-full px-3 py-2 border border-gray-300 outline-none' type="email" placeholder='your@email.com' required />
+        <div className='min-h-screen flex items-center justify-center w-full bg-gradient-to-br from-gray-900 to-gray-800 relative overflow-hidden'>
+            {/* Background Decoration */}
+            <div className="absolute top-[-50px] left-[-50px] w-96 h-96 bg-lime-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+            <div className="absolute top-[-50px] right-[-50px] w-96 h-96 bg-green-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+            <div className="absolute -bottom-8 left-20 w-96 h-96 bg-teal-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+
+            <div className='bg-white/10 backdrop-blur-lg border border-white/20 shadow-2xl rounded-2xl px-10 py-12 max-w-md w-full z-10 mx-4'>
+                <div className='text-center mb-10'>
+                    <h1 className='text-4xl font-extrabold text-white tracking-tight mb-2'>Welcome Back</h1>
+                    <p className='text-gray-300 font-light'>Sign in to manage School of Nature</p>
+                </div>
+
+                <form onSubmit={onSubmitHandler} className='space-y-6'>
+                    <div>
+                        <label className='block text-sm font-medium text-gray-300 mb-2 ml-1'>Email Address</label>
+                        <input
+                            onChange={(e) => setEmail(e.target.value)}
+                            value={email}
+                            className='w-full px-5 py-3 rounded-xl bg-gray-800/50 border border-gray-600/50 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-lime-500 focus:border-transparent transition-all duration-300'
+                            type="email"
+                            placeholder='admin@schoolofnature.com'
+                            required
+                        />
                     </div>
-                    <div className='mb-3 min-w-72'>
-                        <p className='text-sm font-medium text-gray-700 mb-2'>Password</p>
-                        <input onChange={(e) => setPassword(e.target.value)} value={password} className='rounded-md w-full px-3 py-2 border border-gray-300 outline-none' type="password" placeholder='Enter your password' required />
+                    <div>
+                        <label className='block text-sm font-medium text-gray-300 mb-2 ml-1'>Password</label>
+                        <input
+                            onChange={(e) => setPassword(e.target.value)}
+                            value={password}
+                            className='w-full px-5 py-3 rounded-xl bg-gray-800/50 border border-gray-600/50 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-lime-500 focus:border-transparent transition-all duration-300'
+                            type="password"
+                            placeholder='••••••••'
+                            required
+                        />
                     </div>
-                    <button className='mt-2 w-full py-2 px-4 rounded-md text-white bg-black' type="submit"> Login </button>
+
+                    <button
+                        className='w-full py-3.5 px-4 rounded-xl text-white font-bold bg-gradient-to-r from-lime-500 to-green-600 hover:from-lime-400 hover:to-green-500 transform hover:scale-[1.02] transition-all duration-200 shadow-lg hover:shadow-lime-500/25 mt-4'
+                        type="submit"
+                    >
+                        Sign In
+                    </button>
                 </form>
+
+                <div className='mt-8 text-center'>
+                    <p className='text-xs text-gray-500'>
+                        Protected by School of Nature Security
+                    </p>
+                </div>
             </div>
         </div>
     )
