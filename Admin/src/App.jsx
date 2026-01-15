@@ -11,7 +11,7 @@ const List = React.lazy(() => import('./pages/List'))
 const Orders = React.lazy(() => import('./pages/Orders'))
 const Login = React.lazy(() => import('./components/Login'))
 
-export const backendUrl = import.meta.env.VITE_BACKEND_URL
+export const backendUrl = import.meta.env.VITE_BACKEND_URL || ""
 export const currency = '$'
 
 const LoadingFallback = () => (
