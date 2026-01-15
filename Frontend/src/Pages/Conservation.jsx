@@ -1,13 +1,25 @@
 import React from 'react'
 import EnrollmentCallToAction from '../Components/EnrollmentCallToAction'
+import ProgramPageHeader from '../Components/ProgramPageHeader'
+import ProgramGallery from '../Components/ProgramHeroGallery'
+import { Assets } from '../assets/Assets'
 
 const Conservation = () => {
+
+    // Placeholder - user should update with actual Conservation program images
+    const programImages = [
+        Assets.c1, Assets.c2, Assets.Ib3,
+        Assets.Ib1, Assets.Ib2, Assets.Ib3,
+    ];
+
     return (
-        <div className="bg-white py-12 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-                <h1 className="text-3xl font-extrabold text-[#5F9EA0] text-center mb-8">
-                    CONSERVATION & CLIMATE ACTION
-                </h1>
+        <div className="bg-white">
+            <ProgramPageHeader
+                image={Assets.c1}
+                title="CONSERVATION & CLIMATE ACTION"
+                text="Restoring Ecology, Nurturing Tomorrow"
+            />
+            <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
 
                 <div className="prose prose-lg text-gray-700 mx-auto">
                     <p className="mb-8 leading-relaxed">
@@ -33,6 +45,8 @@ const Conservation = () => {
                             The project emphasizes survival, care, and community ownership rather than plantation numbers alone.
                         </p>
                     </div>
+
+                    <ProgramGallery images={programImages} />
 
                     {/* Apiculture */}
                     <div className="p-6 bg-yellow-50 rounded-xl border border-yellow-100">

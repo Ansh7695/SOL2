@@ -1,15 +1,28 @@
 import React from 'react'
 import EnrollmentCallToAction from '../Components/EnrollmentCallToAction'
+import ProgramPageHeader from '../Components/ProgramPageHeader'
+import ProgramGallery from '../Components/ProgramHeroGallery' // Reusing the file we refactored
+import { Assets } from '../assets/Assets'
 
 const KaushalJyotiProgram = () => {
+
+    const programImages = [
+        Assets.k1, Assets.k2, Assets.k3, // Replace with actual Kaushal program images
+        Assets.k4, Assets.k5, Assets.k6,
+        Assets.k7, Assets.k8, Assets.k9,
+        Assets.k10, Assets.k11, Assets.k12,
+        Assets.k13, Assets.k14, Assets.k15,
+        Assets.k16, Assets.k17,
+    ];
+
     return (
         <div className="bg-white">
+            <ProgramPageHeader
+                image={Assets.kheader}
+                title="KAUSHAL JYOTI PROGRAM"
+                text="About: Women’s Livelihoods & Economic Empowerment"
+            />
             <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-                {/* Header Section */}
-                <div className="mb-10 text-center">
-                    <h1 className="text-4xl font-extrabold text-[#5F9EA0] mb-4">KAUSHAL JYOTI PROGRAM</h1>
-                    <h2 className="text-2xl font-semibold text-gray-800">About: Women’s Livelihoods & Economic Empowerment</h2>
-                </div>
 
                 <div className="prose prose-lg text-gray-700 mx-auto max-w-4xl">
                     <p className="mb-6 leading-relaxed">
@@ -40,6 +53,8 @@ const KaushalJyotiProgram = () => {
                             ))}
                         </ul>
                     </div>
+
+                    <ProgramGallery images={programImages} />
 
                     {/* Scale & Impact */}
                     <div>

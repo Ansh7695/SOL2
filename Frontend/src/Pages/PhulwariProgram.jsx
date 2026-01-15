@@ -1,15 +1,37 @@
 import React from 'react'
 import EnrollmentCallToAction from '../Components/EnrollmentCallToAction'
+import ProgramPageHeader from '../Components/ProgramPageHeader'
+import ProgramGallery from '../Components/ProgramHeroGallery' // Reusing the file we refactored
+import { Assets } from '../assets/Assets'
 
 const PhulwariProgram = () => {
+
+    const programImages = [
+        Assets.p1, Assets.p2, Assets.p3, // Replace with actual Phulwari program images
+        Assets.p4, Assets.p5, Assets.p6,
+        Assets.p7, Assets.p8, Assets.p9,
+        Assets.p10, Assets.p11, Assets.p12,
+        Assets.p13, Assets.p14, Assets.p15,
+        Assets.p16, Assets.p17, Assets.p18,
+        Assets.p19, Assets.p20, Assets.p21,
+        Assets.p22, Assets.p23, Assets.p24,
+        Assets.p25, Assets.p26, Assets.p27,
+        Assets.p28, Assets.p29, Assets.p30,
+        Assets.p31, Assets.p32, Assets.p33,
+        Assets.p34, Assets.p35, Assets.p36,
+        Assets.p37, Assets.p38, Assets.p39,
+        Assets.p40, Assets.p41, Assets.p42,
+        Assets.p43,
+    ];
+
     return (
         <div className="bg-white">
+            <ProgramPageHeader
+                image={Assets.pheader}
+                title="PHULWARI PROGRAM"
+                text="About: Education, Inclusion & Environmental Learning"
+            />
             <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-                {/* Header Section */}
-                <div className="mb-10 text-center">
-                    <h1 className="text-4xl font-extrabold text-[#5F9EA0] mb-4">PHULWARI PROGRAM</h1>
-                    <h2 className="text-2xl font-semibold text-gray-800">About: Education, Inclusion & Environmental Learning</h2>
-                </div>
 
                 <div className="prose prose-lg text-gray-700 mx-auto max-w-4xl">
                     <p className="mb-4 leading-relaxed">
@@ -48,6 +70,8 @@ const PhulwariProgram = () => {
                             ))}
                         </ul>
                     </div>
+
+                    <ProgramGallery images={programImages} />
 
                     {/* Program Growth & Reach */}
                     <div className="mb-10">
