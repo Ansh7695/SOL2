@@ -11,7 +11,7 @@ const Conservation = () => {
             <ProgramPageHeader
                 image={Assets.c1}
                 title="CONSERVATION & CLIMATE ACTION"
-                text="Restoring Ecology, Nurturing Tomorrow"
+                text="Conserving Local Ecology, Nurturing Tomorrow"
             />
             <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
 

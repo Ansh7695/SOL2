@@ -9,6 +9,10 @@ import 'react-toastify/dist/ReactToastify.css';
 const Add = React.lazy(() => import('./pages/Add'))
 const List = React.lazy(() => import('./pages/List'))
 const Orders = React.lazy(() => import('./pages/Orders'))
+const AddBlog = React.lazy(() => import('./pages/AddBlog'))
+const ListBlogs = React.lazy(() => import('./pages/ListBlogs'))
+const AddPublication = React.lazy(() => import('./pages/AddPublication'))
+const ListPublications = React.lazy(() => import('./pages/ListPublications'))
 const Login = React.lazy(() => import('./components/Login'))
 
 export const backendUrl = import.meta.env.VITE_BACKEND_URL || ""
@@ -44,6 +48,14 @@ const App = () => {
                                     <Route path='/add' element={<Add token={token} />} />
                                     <Route path='/list' element={<List token={token} />} />
                                     <Route path='/orders' element={<Orders token={token} />} />
+
+                                    {/* Blog Routes */}
+                                    <Route path='/add-blog' element={<AddBlog token={token} />} />
+                                    <Route path='/list-blogs' element={<ListBlogs token={token} />} />
+
+                                    {/* Publication Routes */}
+                                    <Route path='/add-publication' element={<AddPublication token={token} />} />
+                                    <Route path='/list-publications' element={<ListPublications token={token} />} />
                                 </Routes>
                             </Suspense>
                         </div>

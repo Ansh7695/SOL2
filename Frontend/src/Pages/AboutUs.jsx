@@ -1,5 +1,6 @@
 import React from 'react'
 import { Eye, Target, MapPin, Users, Scale, FileCheck, CheckCircle2 } from 'lucide-react'
+import { Assets } from '../assets/Assets'
 
 const AboutUs = () => {
     return (
@@ -15,7 +16,61 @@ const AboutUs = () => {
                     </div>
                 </div>
 
+                {/* Founder's Note Section */}
+                <div className="max-w-7xl mx-auto py-16 px-6">
+                    <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12 border-l-8 border-lime-500">
+                        <h2 className="text-3xl font-bold text-gray-900 mb-6">Founder's Note</h2>
+                        <div className="prose text-gray-700 text-lg leading-relaxed italic">
+                            "Welcome to School of Nature. Our journey began with a simple yet profound belief: that nature is our best teacher.
+                            We envisioned a platform where communities could thrive in harmony with their environment.
+                            Every step we take is guided by the principles of sustainability, empathy, and empowerment.
+                            We invite you to join us in this mission to create a greener, more equitable future for all."
+                        </div>
+                        <p className="mt-6 text-xl font-semibold text-lime-700">- Founder Name</p>
+                    </div>
+                </div>
 
+                {/* Our Team - Tree Structure */}
+                <div className="max-w-7xl mx-auto py-16 px-6">
+                    <h2 className="text-4xl font-bold text-center text-gray-900 mb-16">Our <span className="text-lime-600">Team</span></h2>
+
+                    <div className="flex flex-col items-center">
+                        {/* Level 1: Owner/Founder */}
+                        <div className="flex flex-col items-center mb-8 relative">
+                            <div className="w-32 h-32 rounded-full border-4 border-lime-500 overflow-hidden shadow-lg mb-4 bg-gray-200">
+                                {/* <img src={Assets.founder_img} alt="Founder" className="w-full h-full object-cover" /> */}
+                                <Users className="w-full h-full p-6 text-gray-400" />
+                            </div>
+                            <h3 className="text-xl font-bold text-gray-900">Founder Name</h3>
+                            <p className="text-lime-600 font-medium">Founder & CEO</p>
+
+                            {/* Vertical Line */}
+                            <div className="absolute top-full left-1/2 w-0.5 h-12 bg-gray-300 -translate-x-1/2"></div>
+                        </div>
+
+                        {/* Level 2: Core Team */}
+                        <div className="w-full flex justify-center gap-8 md:gap-16 pt-12 relative before:content-[''] before:absolute before:top-0 before:left-1/4 before:right-1/4 before:h-0.5 before:bg-gray-300">
+                            {/* Connector Lines */}
+                            <div className="absolute top-0 left-1/2 w-0.5 h-12 bg-gray-300 -translate-x-1/2 -mt-12"></div>
+
+                            {[1, 2, 3].map((item) => (
+                                <div key={item} className="flex flex-col items-center relative">
+                                    <div className="absolute top-0 left-1/2 w-0.5 h-12 bg-gray-300 -translate-x-1/2 -mt-12"></div>
+                                    <div className="w-24 h-24 rounded-full border-3 border-lime-400 overflow-hidden shadow mb-3 bg-gray-100">
+                                        <Users className="w-full h-full p-4 text-gray-400" />
+                                    </div>
+                                    <h4 className="text-lg font-bold text-gray-800">Team Member {item}</h4>
+                                    <p className="text-sm text-lime-600">Designation</p>
+                                </div>
+                            ))}
+                        </div>
+
+                        {/* Level 3: Extended Team (Optional) */}
+                        <div className="w-full flex justify-center gap-4 md:gap-8 pt-12">
+                            {/* Add more branches if needed */}
+                        </div>
+                    </div>
+                </div>
 
                 {/* Geographic Focus */}
                 <div className="bg-white py-16 px-6">

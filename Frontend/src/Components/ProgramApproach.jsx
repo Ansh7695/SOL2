@@ -4,19 +4,19 @@ import { BookOpen, Briefcase, Sprout } from 'lucide-react';
 const ProgramApproach = () => {
     const programs = [
         {
-            title: "Education: Phulwari Program",
+            title: "Phulwari Program",
             description: "Builds foundational learning, environmental awareness, values, and future skills among children, enabling informed and responsible citizenship.",
             icon: <BookOpen className="w-12 h-12 text-white mb-4" />,
             bgColor: "bg-orange-500"
         },
         {
-            title: "Livelihoods: Kaushal Jyoti Program",
+            title: "Kaushal Jyoti Program",
             description: "Strengthens household resilience by enhancing women’s skills, income security, Entrepreneurship, and economic agency through low-carbon and culturally rooted livelihoods.",
             icon: <Briefcase className="w-12 h-12 text-white mb-4" />,
             bgColor: "bg-blue-500"
         },
         {
-            title: "Climate Action: Conservation & Apiculture",
+            title: "Conservation & Apiculture",
             description: "Protects ecosystems, biodiversity, and natural resources while generating livelihood opportunities linked to conservation outcomes.",
             icon: <Sprout className="w-12 h-12 text-white mb-4" />,
             bgColor: "bg-green-600"

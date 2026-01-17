@@ -22,6 +22,28 @@ const Sidebar = () => {
                     <p className='hidden md:block'>Orders</p>
                 </NavLink>
 
+                {/* Blogs Management */}
+                <NavLink className='flex items-center gap-3 border border-gray-300 border-r-0 px-3 py-2 rounded-l' to="/add-blog">
+                    <CirclePlus className="w-5 h-5" />
+                    <p className='hidden md:block'>Add Blog</p>
+                </NavLink>
+
+                <NavLink className='flex items-center gap-3 border border-gray-300 border-r-0 px-3 py-2 rounded-l' to="/list-blogs">
+                    <ListOrdered className="w-5 h-5" />
+                    <p className='hidden md:block'>List Blogs</p>
+                </NavLink>
+
+                {/* Publications Management */}
+                <NavLink className='flex items-center gap-3 border border-gray-300 border-r-0 px-3 py-2 rounded-l' to="/add-publication">
+                    <CirclePlus className="w-5 h-5" />
+                    <p className='hidden md:block'>Add Pub</p>
+                </NavLink>
+
+                <NavLink className='flex items-center gap-3 border border-gray-300 border-r-0 px-3 py-2 rounded-l' to="/list-publications">
+                    <ListOrdered className="w-5 h-5" />
+                    <p className='hidden md:block'>List Pubs</p>
+                </NavLink>
+
             </div>
         </div>
     )

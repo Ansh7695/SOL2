@@ -34,6 +34,8 @@ const Navbar = () => {
         <ul className="hidden md:flex items-center gap-8 text-base font-medium tracking-wide text-gray-800">
           <Link to="/" className="hover:text-green-600 cursor-pointer">Home</Link>
           <Link to="/about-us" className="hover:text-green-600 cursor-pointer">About Us</Link>
+          <Link to="/blogs" className="hover:text-green-600 cursor-pointer">Blogs</Link>
+          <Link to="/publications" className="hover:text-green-600 cursor-pointer">Publications</Link>
 
 
           {/* Programs Dropdown */}
@@ -101,6 +103,8 @@ const Navbar = () => {
           <ul className="flex flex-col items-start gap-4 p-6 text-gray-800 text-base font-medium tracking-wide">
             <Link to="/" onClick={() => setIsOpen(false)} className="hover:text-green-600 cursor-pointer">Home</Link>
             <Link to="/about-us" onClick={() => setIsOpen(false)} className="hover:text-green-600 cursor-pointer">About Us</Link>
+            <Link to="/blogs" onClick={() => setIsOpen(false)} className="hover:text-green-600 cursor-pointer">Blogs</Link>
+            <Link to="/publications" onClick={() => setIsOpen(false)} className="hover:text-green-600 cursor-pointer">Publications</Link>
             <Link to="/marketplace" onClick={() => setIsOpen(false)} className="hover:text-green-600 cursor-pointer">Our Marketplace</Link>
             <li className="cursor-pointer">
               <span className="hover:text-green-600">Programs</span>

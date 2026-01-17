@@ -14,6 +14,9 @@ const KaushalJyotiProgram = React.lazy(() => import('./Pages/KaushalJyotiProgram
 const Impact = React.lazy(() => import('./Pages/Impact'))
 const Conservation = React.lazy(() => import('./Pages/Conservation'))
 const ContactUs = React.lazy(() => import('./Pages/ContactUs'))
+const Blogs = React.lazy(() => import('./Pages/Blogs'))
+const Publications = React.lazy(() => import('./Pages/Publications'))
+
 const ShopLanding = React.lazy(() => import('./Pages/Shop/ShopLanding'))
 const ProductListing = React.lazy(() => import('./Pages/Shop/ProductListing'))
 const ProductDetails = React.lazy(() => import('./Pages/Shop/ProductDetails'))
@@ -44,6 +47,8 @@ const App = () => {
             <Route path='/impact' element={<Impact />} />
             <Route path='/conservation' element={<Conservation />} />
             <Route path='/contact-us' element={<ContactUs />} />
+            <Route path='/blogs' element={<Blogs />} />
+            <Route path='/publications' element={<Publications />} />
 
             {/* Shop Routes */}
             <Route path='/shop' element={<ShopLanding />} />

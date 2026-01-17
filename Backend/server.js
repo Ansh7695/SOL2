@@ -1,4 +1,4 @@
-import express from 'express';
+import express from 'express'; // Server entry
 import cors from 'cors';
 import 'dotenv/config';
 import connectDB from './config/db.js';
@@ -7,6 +7,8 @@ import productRouter from './routes/productRoute.js';
 import cartRouter from './routes/cartRoute.js';
 import orderRouter from './routes/orderRoute.js';
 import mailRouter from './routes/mailRoute.js';
+import publicationRouter from './routes/publicationRoute.js';
+import blogRouter from './routes/blogRoute.js';
 
 // App Config
 const app = express();
@@ -23,6 +25,8 @@ app.use('/api/product', productRouter);
 app.use('/api/cart', cartRouter);
 app.use('/api/order', orderRouter);
 app.use('/api/mail', mailRouter);
+app.use('/api/publication', publicationRouter);
+app.use('/api/blog', blogRouter);
 app.use('/images', express.static('uploads'));
 
 app.get('/', (req, res) => {
