@@ -67,9 +67,9 @@ import c1 from "./conservation program/c1.jpeg"
 import c2 from "./conservation program/c2.jpeg"
 import pheader from "./PhulwariHeader.jpeg"
 import kheader from "./KaushalHeader.jpeg"
-import kaushallogo from "./kaushal jyoti final png.png"
-import conservationlogo from "./conservation.jpg"
-import phulwariLogo from "./phulwari square.jpg"
+import kaushallogo from "./kaushalJyotiLogo.png"
+import conservationlogo from "./conservationLogo.jpg"
+import phulwariLogo from "./phulwariLogo.jpg"
 
 
 export const Assets = {
