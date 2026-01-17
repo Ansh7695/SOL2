@@ -1,24 +1,25 @@
 import React from 'react';
 import { BookOpen, Briefcase, Sprout } from 'lucide-react';
+import { Assets } from '../assets/Assets';
 
 const ProgramApproach = () => {
     const programs = [
         {
             title: "Phulwari Program",
             description: "Builds foundational learning, environmental awareness, values, and future skills among children, enabling informed and responsible citizenship.",
-            icon: <BookOpen className="w-12 h-12 text-white mb-4" />,
+            image: Assets.phulwariLogo,
             bgColor: "bg-orange-500"
         },
         {
             title: "Kaushal Jyoti Program",
             description: "Strengthens household resilience by enhancing women’s skills, income security, Entrepreneurship, and economic agency through low-carbon and culturally rooted livelihoods.",
-            icon: <Briefcase className="w-12 h-12 text-white mb-4" />,
+            image: Assets.kaushallogo,
             bgColor: "bg-blue-500"
         },
         {
             title: "Conservation & Apiculture",
             description: "Protects ecosystems, biodiversity, and natural resources while generating livelihood opportunities linked to conservation outcomes.",
-            icon: <Sprout className="w-12 h-12 text-white mb-4" />,
+            image: Assets.conservationlogo,
             bgColor: "bg-green-600"
         }
     ];
@@ -39,7 +40,9 @@ const ProgramApproach = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {programs.map((program, index) => (
                         <div key={index} className={`${program.bgColor} p-8 rounded-xl shadow-lg transform hover:-translate-y-2 transition-transform duration-300 text-white flex flex-col items-center text-center`}>
-                            {program.icon}
+                            <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center mb-6 shadow-md overflow-hidden p-2">
+                                <img src={program.image} alt={program.title} className="w-full h-full object-contain" />
+                            </div>
                             <h3 className="text-2xl font-bold mb-4">{program.title}</h3>
                             <p className="leading-relaxed opacity-90">
                                 {program.description}
