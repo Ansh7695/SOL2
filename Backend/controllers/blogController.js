@@ -4,14 +4,14 @@ import fs from 'fs'
 // Add Blog
 const addBlog = async (req, res) => {
     try {
-        let image_filename = `${req.file.filename}`;
+        let image_filename = req.file ? `${req.file.filename}` : "";
 
         const blog = new blogModel({
             title: req.body.title,
             content: req.body.content,
             author: req.body.author,
-            image: image_filename,
             category: req.body.category,
+            image: image_filename,
             date: Date.now()
         })
 
@@ -35,12 +35,40 @@ const listBlogs = async (req, res) => {
     }
 }
 
+// Update Blog
+const updateBlog = async (req, res) => {
+    try {
+        const { id, title, content, author, category } = req.body;
+
+        let updateData = {
+            title,
+            content,
+            author,
+            category
+        };
+
+        if (req.file) {
+            updateData.image = req.file.filename;
+
+            // Optionally delete old image
+            const oldBlog = await blogModel.findById(id);
+            if (oldBlog && oldBlog.image) {
+                fs.unlink(`uploads/${oldBlog.image}`, () => { });
+            }
+        }
+
+        await blogModel.findByIdAndUpdate(id, updateData);
+        res.json({ success: true, message: "Blog Updated" })
+
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: error.message })
+    }
+}
+
 // Remove Blog
 const removeBlog = async (req, res) => {
     try {
-        const blog = await blogModel.findById(req.body.id);
-        fs.unlink(`uploads/${blog.image}`, () => { })
-
         await blogModel.findByIdAndDelete(req.body.id);
         res.json({ success: true, message: "Blog Removed" })
 
@@ -50,4 +78,4 @@ const removeBlog = async (req, res) => {
     }
 }
 
-export { addBlog, listBlogs, removeBlog }
+export { addBlog, listBlogs, removeBlog, updateBlog }

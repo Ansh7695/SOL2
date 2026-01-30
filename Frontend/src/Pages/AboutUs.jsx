@@ -16,6 +16,39 @@ const AboutUs = () => {
                     </div>
                 </div>
 
+                {/* Vision & Mission - Prominent Section */}
+                <div className="relative bg-white py-24 px-6 overflow-hidden">
+                    <div className="max-w-7xl mx-auto relative z-10">
+                        <div className="grid md:grid-cols-2 gap-12">
+                            {/* Vision */}
+                            <div className="bg-lime-50 p-10 rounded-3xl border border-lime-100 shadow-lg transform hover:scale-105 transition-transform duration-300">
+                                <div className="flex items-center gap-5 mb-6">
+                                    <div className="bg-white p-3 rounded-full shadow-md border border-lime-100">
+                                        <Eye className="w-8 h-8 text-lime-600" />
+                                    </div>
+                                    <h2 className="text-3xl font-bold text-gray-900">Our Vision</h2>
+                                </div>
+                                <p className="text-gray-700 leading-relaxed text-xl">
+                                    To build a climate-resilient and eco-sensitive society where marginalized communities, especially women and children, live with dignity, equality, and harmony with nature.
+                                </p>
+                            </div>
+
+                            {/* Mission */}
+                            <div className="bg-lime-50 p-10 rounded-3xl border border-lime-100 shadow-lg transform hover:scale-105 transition-transform duration-300">
+                                <div className="flex items-center gap-5 mb-6">
+                                    <div className="bg-white p-3 rounded-full shadow-md border border-lime-100">
+                                        <Target className="w-8 h-8 text-lime-600" />
+                                    </div>
+                                    <h2 className="text-3xl font-bold text-gray-900">Our Mission</h2>
+                                </div>
+                                <p className="text-gray-700 leading-relaxed text-xl">
+                                    To strengthen communities at the grassroots by promoting ecological sustainability in education, livelihoods, and daily life, guided by the principle of Sustainable Development Goals.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 {/* Founder's Note Section */}
                 <div className="max-w-7xl mx-auto py-16 px-6">
                     <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12 border-l-8 border-lime-500">
@@ -26,49 +59,46 @@ const AboutUs = () => {
                             Every step we take is guided by the principles of sustainability, empathy, and empowerment.
                             We invite you to join us in this mission to create a greener, more equitable future for all."
                         </div>
-                        <p className="mt-6 text-xl font-semibold text-lime-700">- Founder Name</p>
+                        <p className="mt-6 text-xl font-semibold text-lime-700">- Manisha Ahlawat</p>
                     </div>
                 </div>
 
-                {/* Our Team - Tree Structure */}
+                {/* Our Team */}
                 <div className="max-w-7xl mx-auto py-16 px-6">
                     <h2 className="text-4xl font-bold text-center text-gray-900 mb-16">Our <span className="text-lime-600">Team</span></h2>
 
-                    <div className="flex flex-col items-center">
-                        {/* Level 1: Owner/Founder */}
-                        <div className="flex flex-col items-center mb-8 relative">
-                            <div className="w-32 h-32 rounded-full border-4 border-lime-500 overflow-hidden shadow-lg mb-4 bg-gray-200">
-                                {/* <img src={Assets.founder_img} alt="Founder" className="w-full h-full object-cover" /> */}
-                                <Users className="w-full h-full p-6 text-gray-400" />
-                            </div>
-                            <h3 className="text-xl font-bold text-gray-900">Founder Name</h3>
-                            <p className="text-lime-600 font-medium">Founder & CEO</p>
-
-                            {/* Vertical Line */}
-                            <div className="absolute top-full left-1/2 w-0.5 h-12 bg-gray-300 -translate-x-1/2"></div>
+                    {/* Founder Section */}
+                    <div className="flex flex-col md:flex-row items-center gap-12 mb-20 bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                        <div className="w-48 h-48 md:w-64 md:h-64 shrink-0 rounded-full border-4 border-lime-500 overflow-hidden shadow-lg bg-gray-200">
+                            <Users className="w-full h-full p-10 text-gray-400" />
                         </div>
+                        <div className="text-center md:text-left">
+                            <h3 className="text-3xl font-bold text-gray-900 mb-2">Manisha Ahlawat</h3>
+                            <p className="text-lime-600 font-semibold text-lg mb-4">Founder & CEO</p>
+                            <p className="text-gray-600 leading-relaxed text-lg">
+                                With over two decades of experience in social development and environmental conservation, Manisha Founder has been a driving force behind the School of Nature. Her vision is to bridge the gap between traditional wisdom and modern sustainability practices, empowering communities to lead self-sufficient lives.
+                            </p>
+                        </div>
+                    </div>
 
-                        {/* Level 2: Core Team */}
-                        <div className="w-full flex justify-center gap-8 md:gap-16 pt-12 relative before:content-[''] before:absolute before:top-0 before:left-1/4 before:right-1/4 before:h-0.5 before:bg-gray-300">
-                            {/* Connector Lines */}
-                            <div className="absolute top-0 left-1/2 w-0.5 h-12 bg-gray-300 -translate-x-1/2 -mt-12"></div>
-
-                            {[1, 2, 3].map((item) => (
-                                <div key={item} className="flex flex-col items-center relative">
-                                    <div className="absolute top-0 left-1/2 w-0.5 h-12 bg-gray-300 -translate-x-1/2 -mt-12"></div>
-                                    <div className="w-24 h-24 rounded-full border-3 border-lime-400 overflow-hidden shadow mb-3 bg-gray-100">
-                                        <Users className="w-full h-full p-4 text-gray-400" />
-                                    </div>
-                                    <h4 className="text-lg font-bold text-gray-800">Team Member {item}</h4>
-                                    <p className="text-sm text-lime-600">Designation</p>
+                    {/* Core Team Grid */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {[
+                            { name: "Team Member 1", role: "Operations Head", bio: "Expert in supply chain management and community logistics." },
+                            { name: "Team Member 2", role: "Program Director", bio: "Specializes in educational curriculum development and child welfare." },
+                            { name: "Team Member 3", role: "Community Outreach", bio: "Bridge between the organization and the rural communities we serve." }
+                        ].map((member, idx) => (
+                            <div key={idx} className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow border-t-4 border-lime-500 flex flex-col items-center text-center">
+                                <div className="w-24 h-24 rounded-full border-2 border-gray-200 overflow-hidden mb-4 bg-gray-100">
+                                    <Users className="w-full h-full p-4 text-gray-400" />
                                 </div>
-                            ))}
-                        </div>
-
-                        {/* Level 3: Extended Team (Optional) */}
-                        <div className="w-full flex justify-center gap-4 md:gap-8 pt-12">
-                            {/* Add more branches if needed */}
-                        </div>
+                                <h4 className="text-xl font-bold text-gray-900">{member.name}</h4>
+                                <p className="text-sm font-semibold text-lime-600 uppercase tracking-wide mb-3">{member.role}</p>
+                                <p className="text-gray-500 text-sm">
+                                    {member.bio}
+                                </p>
+                            </div>
+                        ))}
                     </div>
                 </div>
 
@@ -102,37 +132,6 @@ const AboutUs = () => {
                                 <Users className="w-full h-64 text-lime-200" strokeWidth={0.5} />
                                 {/* Placeholder for a real map or community image */}
                             </div>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Vision & Mission */}
-                <div className="max-w-7xl mx-auto py-28 px-6">
-                    <div className="grid md:grid-cols-2 gap-12">
-                        {/* Vision */}
-                        <div className="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-lime-500 hover:shadow-xl transition-shadow duration-300">
-                            <div className="flex items-center gap-4 mb-6">
-                                <div className="bg-lime-100 p-3 rounded-full">
-                                    <Eye className="w-8 h-8 text-lime-600" />
-                                </div>
-                                <h2 className="text-2xl font-bold text-gray-800">Our Vision</h2>
-                            </div>
-                            <p className="text-gray-600 leading-relaxed text-lg">
-                                To build a climate-resilient and eco-sensitive society where marginalized communities, especially women and children, live with dignity, equality, and harmony with nature.
-                            </p>
-                        </div>
-
-                        {/* Mission */}
-                        <div className="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-lime-500 hover:shadow-xl transition-shadow duration-300">
-                            <div className="flex items-center gap-4 mb-6">
-                                <div className="bg-lime-100 p-3 rounded-full">
-                                    <Target className="w-8 h-8 text-lime-600" />
-                                </div>
-                                <h2 className="text-2xl font-bold text-gray-800">Our Mission</h2>
-                            </div>
-                            <p className="text-gray-600 leading-relaxed text-lg">
-                                To strengthen communities at the grassroots by promoting ecological sustainability in education, livelihoods, and daily life, guided by the principle of Sustainable Development Goals and preserving and revitalizing India’s traditional knowledge systems.
-                            </p>
                         </div>
                     </div>
                 </div>
@@ -172,26 +171,26 @@ const AboutUs = () => {
                             </div>
                             <div className="space-y-6">
                                 <div className="border-b border-gray-700 pb-4">
-                                    <p className="text-gray-400 text-sm uppercase tracking-wider mb-1">Registered on</p>
+                                    <p className="text-gray-400 text-sm uppercase tracking-wider mb-1">Registered No. - ABECS3657FF20225</p>
                                     <p className="text-lg font-semibold text-lime-400">NGO Darpan</p>
-                                    <p className="text-gray-300">Darpan ID: XXXXX</p>
+                                    <p className="text-gray-300">Darpan ID: UP/2023/0335581</p>
                                 </div>
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                                     <div>
                                         <p className="text-gray-400 text-sm uppercase tracking-wider mb-1">Income Tax</p>
-                                        <p className="text-white font-medium">12A & 80G (XXXXX)</p>
+                                        <p className="text-white font-medium">12A & 80G (BECS3657FE20219)</p>
                                     </div>
                                     <div>
                                         <p className="text-gray-400 text-sm uppercase tracking-wider mb-1">CSR-1</p>
-                                        <p className="text-white font-medium">Registration: XXXXX</p>
+                                        <p className="text-white font-medium">Registration: MCA:369298</p>
                                     </div>
                                     <div>
                                         <p className="text-gray-400 text-sm uppercase tracking-wider mb-1">ISO</p>
-                                        <p className="text-white font-medium">Quality Management System: XXXXX</p>
+                                        <p className="text-white font-medium">Quality Management System: (Applied)</p>
                                     </div>
                                     <div>
                                         <p className="text-gray-400 text-sm uppercase tracking-wider mb-1">MSME</p>
-                                        <p className="text-white font-medium">Registration: XXXXX</p>
+                                        <p className="text-white font-medium">Registration: (Applied)</p>
                                     </div>
                                 </div>
                             </div>

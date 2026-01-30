@@ -32,7 +32,31 @@ const Impact = () => {
             id: 5,
             icon: <Briefcase className="w-10 h-10 text-[#5F9EA0]" />,
             value: "250",
-            label: "Women engaged in Kaushal Jyoti livelihoods annually"
+            label: "Women engaged in Kaushal Jyoti livelihoods"
+        },
+        {
+            id: 6,
+            icon: <Briefcase className="w-10 h-10 text-[#5F9EA0]" />,
+            value: "XYZ",
+            label: "XYZ"
+        },
+        {
+            id: 7,
+            icon: <Briefcase className="w-10 h-10 text-[#5F9EA0]" />,
+            value: "XYZ",
+            label: "XYZ"
+        },
+        {
+            id: 8,
+            icon: <Briefcase className="w-10 h-10 text-[#5F9EA0]" />,
+            value: "XYZ",
+            label: "XYZ"
+        },
+        {
+            id: 9,
+            icon: <Briefcase className="w-10 h-10 text-[#5F9EA0]" />,
+            value: "XYZ",
+            label: "XYZ"
         }
     ]
 

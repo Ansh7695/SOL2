@@ -50,7 +50,7 @@ const Footer = () => {
               <h3 className="font-bold text-gray-900 uppercase tracking-wider text-sm mb-2">Contact Us</h3>
               <div className="flex items-start gap-3 text-gray-600 text-sm font-medium">
                 <span className="mt-1 text-green-600">📍</span>
-                <p>123 Green Earth Way,<br />Sustainable City, India</p>
+                <p>31, Shivji Marg, Rangpur,<br />New Delhi, India - 110037</p>
               </div>
               <div className="flex items-center gap-3 text-gray-600 text-sm font-medium">
                 <span className="text-green-600">📞</span>
@@ -58,7 +58,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-3 text-gray-600 text-sm font-medium">
                 <span className="text-green-600">✉️</span>
-                <p>contact@example.com</p>
+                <p>contactschoolofnature@gmail.com</p>
               </div>
             </div>
 

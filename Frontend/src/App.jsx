@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const Homepage = React.lazy(() => import('./Pages/Homepage'))
 const AboutUs = React.lazy(() => import('./Pages/AboutUs'))
 const Marketplace = React.lazy(() => import('./Pages/Marketplace'))
+const ProgramsPage = React.lazy(() => import('./Pages/ProgramsPage')) // Added
 const PhulwariProgram = React.lazy(() => import('./Pages/PhulwariProgram'))
 const KaushalJyotiProgram = React.lazy(() => import('./Pages/KaushalJyotiProgram'))
 const Impact = React.lazy(() => import('./Pages/Impact'))
@@ -42,6 +43,7 @@ const App = () => {
             <Route path='/' element={<Homepage />} />
             <Route path='/about-us' element={<AboutUs />} />
             <Route path='/marketplace' element={<Marketplace />} />
+            <Route path='/programs' element={<ProgramsPage />} /> {/* Added */}
             <Route path='/programs/phulwari' element={<PhulwariProgram />} />
             <Route path='/programs/kaushal-jyoti' element={<KaushalJyotiProgram />} />
             <Route path='/impact' element={<Impact />} />

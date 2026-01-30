@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { BookOpen, Briefcase, Sprout } from 'lucide-react';
 import { Assets } from '../assets/Assets';
 
@@ -8,19 +9,22 @@ const ProgramApproach = () => {
             title: "Phulwari Program",
             description: "Builds foundational learning, environmental awareness, values, and future skills among children, enabling informed and responsible citizenship.",
             image: Assets.phulwariLogo,
-            bgColor: "bg-orange-500"
+            bgColor: "bg-orange-500",
+            link: "/programs/phulwari"
         },
         {
             title: "Kaushal Jyoti Program",
             description: "Strengthens household resilience by enhancing women’s skills, income security, Entrepreneurship, and economic agency through low-carbon and culturally rooted livelihoods.",
             image: Assets.kaushallogo,
-            bgColor: "bg-blue-500"
+            bgColor: "bg-blue-500",
+            link: "/programs/kaushal-jyoti"
         },
         {
             title: "Conservation & Apiculture",
             description: "Protects ecosystems, biodiversity, and natural resources while generating livelihood opportunities linked to conservation outcomes.",
             image: Assets.conservationlogo,
-            bgColor: "bg-green-600"
+            bgColor: "bg-green-600",
+            link: "/conservation"
         }
     ];
 
@@ -39,7 +43,11 @@ const ProgramApproach = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {programs.map((program, index) => (
-                        <div key={index} className={`${program.bgColor} p-8 rounded-xl shadow-lg transform hover:-translate-y-2 transition-transform duration-300 text-white flex flex-col items-center text-center`}>
+                        <Link
+                            to={program.link}
+                            key={index}
+                            className={`${program.bgColor} p-8 rounded-xl shadow-lg transform hover:-translate-y-2 transition-transform duration-300 text-white flex flex-col items-center text-center cursor-pointer block`}
+                        >
                             <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center mb-6 shadow-md overflow-hidden p-2">
                                 <img src={program.image} alt={program.title} className="w-full h-full object-contain" />
                             </div>
@@ -47,7 +55,7 @@ const ProgramApproach = () => {
                             <p className="leading-relaxed opacity-90">
                                 {program.description}
                             </p>
-                        </div>
+                        </Link>
                     ))}
                 </div>
 

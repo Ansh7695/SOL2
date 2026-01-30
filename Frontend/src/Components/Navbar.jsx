@@ -35,25 +35,11 @@ const Navbar = () => {
           <Link to="/" className="hover:text-green-600 cursor-pointer">Home</Link>
           <Link to="/about-us" className="hover:text-green-600 cursor-pointer">About Us</Link>
           <Link to="/blogs" className="hover:text-green-600 cursor-pointer">Blogs</Link>
-          <Link to="/publications" className="hover:text-green-600 cursor-pointer">Publications</Link>
 
 
           {/* Programs Dropdown */}
           <li className="relative group cursor-pointer h-full flex items-center hover:text-green-600">
-            <span className="py-4">Programs</span>
-            <div className="absolute top-full left-0 w-56 bg-white shadow-lg rounded-md hidden group-hover:block border z-50">
-              <ul className="py-2 text-gray-700">
-                <Link to="/programs/phulwari">
-                  <li className="px-4 py-2 hover:bg-gray-100 hover:text-green-600">Phulwari Program</li>
-                </Link>
-                <Link to="/programs/kaushal-jyoti">
-                  <li className="px-4 py-2 hover:bg-gray-100 hover:text-green-600">Kaushal Jyoti Program</li>
-                </Link>
-                <Link to="/conservation">
-                  <li className="px-4 py-2 hover:bg-gray-100 hover:text-green-600">Conservation Actions</li>
-                </Link>
-              </ul>
-            </div>
+            <Link to="/programs" className="py-4">Programs</Link>
           </li>
           <Link to="/impact" className="hover:text-green-600 cursor-pointer">Impact At a Glance</Link>
           <Link to="/marketplace" className="hover:text-green-600 cursor-pointer">Our Marketplace</Link>

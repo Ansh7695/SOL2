@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { backendUrl } from '../App'
 import { toast } from 'react-toastify'
+
 import { Upload } from 'lucide-react'
 
 const AddBlog = ({ token }) => {
@@ -21,7 +22,7 @@ const AddBlog = ({ token }) => {
             formData.append("content", content)
             formData.append("author", author)
             formData.append("category", category)
-            formData.append("image", image)
+            if (image) formData.append("image", image)
 
             const response = await axios.post(backendUrl + '/api/blog/add', formData, { headers: { token } })
 
@@ -30,7 +31,6 @@ const AddBlog = ({ token }) => {
                 setTitle('')
                 setContent('')
                 setAuthor('')
-                setImage(false)
                 setCategory('General')
             } else {
                 toast.error(response.data.message)
@@ -45,14 +45,15 @@ const AddBlog = ({ token }) => {
     return (
         <form onSubmit={onSubmitHandler} className='flex flex-col w-full gap-3'>
             <div>
-                <p className='mb-2'>Upload Blog Image</p>
+                <p className='mb-2'>Upload Blog Image (Optional)</p>
                 <label htmlFor="image">
                     <div className='w-full max-w-[500px] h-48 border-2 border-gray-300 border-dashed flex items-center justify-center cursor-pointer'>
                         {!image ? <Upload className="text-gray-400 w-10 h-10" /> : <img className='w-full h-full object-cover' src={URL.createObjectURL(image)} alt="" />}
                     </div>
-                    <input onChange={(e) => setImage(e.target.files[0])} type="file" id="image" hidden required />
+                    <input onChange={(e) => setImage(e.target.files[0])} type="file" id="image" hidden />
                 </label>
             </div>
+
 
             <div className='w-full'>
                 <p className='mb-2'>Blog Title</p>
