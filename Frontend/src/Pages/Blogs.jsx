@@ -78,8 +78,7 @@ const Blogs = () => {
                             )}
 
                             <div className="flex items-center gap-2 text-xs text-gray-400 mb-3 font-medium">
-                                <span>{new Date(blog.date).toLocaleDateString()}</span>
-                                <span className="w-1 h-1 bg-gray-300 rounded-full"></span>
+
                                 <span>By {blog.author}</span>
                             </div>
 
@@ -154,8 +153,7 @@ const Blogs = () => {
                             )}
 
                             <div className="flex flex-wrap items-center gap-3 text-sm font-medium mb-6 text-gray-500">
-                                <span className="text-gray-900 font-semibold">{new Date(selectedBlog.date).toLocaleDateString()}</span>
-                                <span className="w-1 h-1 bg-gray-300 rounded-full"></span>
+
                                 <span>By {selectedBlog.author}</span>
                             </div>
 

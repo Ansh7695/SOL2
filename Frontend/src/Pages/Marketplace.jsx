@@ -34,23 +34,26 @@ const Marketplace = () => {
                     </div>
                 </div>
 
-                {/* Shop by Category Section */}
                 <div className="mb-16">
                     <h2 className="text-3xl font-bold text-gray-800 mb-10 text-center">Shop by Category</h2>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                        {['Crafts', 'Textiles', 'Food', 'Pottery'].map((cat, idx) => (
-                            <Link to={`/shop/products?category=${cat}`} key={idx} className="group relative rounded-xl overflow-hidden aspect-square shadow-md hover:shadow-xl transition-all">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                        {['Handicrafts', 'Natural Foods'].map((cat, idx) => (
+                            <Link to={`/shop/products?category=${cat}`} key={idx} className="group relative rounded-xl overflow-hidden aspect-[16/9] shadow-md hover:shadow-xl transition-all">
                                 <div className={`absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-10`} />
-                                <div className={`absolute inset-0 ${idx === 0 ? 'bg-orange-100' : idx === 1 ? 'bg-indigo-100' : idx === 2 ? 'bg-green-100' : 'bg-red-100'}`} />
+                                {/* Placeholder gradients for categories */}
+                                <div className={`absolute inset-0 ${idx === 0 ? 'bg-orange-100' : 'bg-green-100'
+                                    }`} />
                                 <img
-                                    src={`https://source.unsplash.com/random/400x400?${cat.toLowerCase()}`}
+                                    src={idx === 0
+                                        ? "https://images.unsplash.com/photo-1615875605809-90176cd63426?auto=format&fit=crop&w=800&q=80" // Handicrafts image
+                                        : "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=800&q=80" // Natural Foods image
+                                    }
                                     alt={cat}
                                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                                    onError={(e) => e.target.style.display = 'none'}
                                 />
-                                <div className="absolute bottom-4 left-4 z-20">
-                                    <h3 className="text-xl font-bold text-white">{cat}</h3>
-                                    <div className="text-sm text-white/80 group-hover:text-white transition-colors">Explore &rarr;</div>
+                                <div className="absolute bottom-6 left-6 z-20">
+                                    <h3 className="text-2xl font-bold text-white">{cat}</h3>
+                                    <div className="text-base text-white/90 group-hover:text-white transition-colors mt-1">Explore Collection &rarr;</div>
                                 </div>
                             </Link>
                         ))}
