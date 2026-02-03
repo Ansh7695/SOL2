@@ -2,14 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import ShopLayout from '../../Components/Shop/ShopLayout';
 import ProductCard from '../../Components/Shop/ProductCard';
+import { useContext } from 'react';
+import { ShopContext } from '../../context/ShopContext';
 
 const ShopLanding = () => {
-    const featuredProducts = [
-        { id: 1, name: "Handwoven Bamboo Basket", price: 450, image: "https://images.unsplash.com/photo-1615875605809-90176cd63426?auto=format&fit=crop&w=800&q=80", category: "Crafts", artisan: "Meena Devi" },
-        { id: 2, name: "Organic Multifloral Honey", price: 600, image: "https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=800&q=80", category: "Food", artisan: "Forest Collective" },
-        { id: 3, name: "Hand-Stitched Kantha Quilt", price: 2500, image: "https://images.unsplash.com/photo-1522008629172-046646b5eac8?auto=format&fit=crop&w=800&q=80", category: "Textiles", artisan: "Radha Women's Group" },
-        { id: 4, name: "Natural Clay Water Pot", price: 350, image: "https://images.unsplash.com/photo-1610701596007-11502861dcfa?auto=format&fit=crop&w=800&q=80", category: "Pottery", artisan: "Ram Lal" },
-    ];
+    const { products, backendUrl } = useContext(ShopContext);
+    const featuredProducts = products.slice(0, 4);
 
     return (
         <ShopLayout>
@@ -75,9 +73,13 @@ const ShopLanding = () => {
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                        {featuredProducts.map(product => (
-                            <ProductCard key={product.id} {...product} />
-                        ))}
+                        {featuredProducts.map(product => {
+                            const imageUrl = product.image && product.image.length > 0
+                                ? `${backendUrl}/images/${product.image[0]}`
+                                : "https://via.placeholder.com/300";
+
+                            return <ProductCard key={product._id} {...product} image={imageUrl} id={product._id} />;
+                        })}
                     </div>
                 </div>
             </div>

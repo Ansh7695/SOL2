@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import ShopLayout from '../../Components/Shop/ShopLayout';
 import ProductCard from '../../Components/Shop/ProductCard';
+import { useContext } from 'react';
+import { ShopContext } from '../../context/ShopContext';
 
 const ProductListing = () => {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -25,20 +27,10 @@ const ProductListing = () => {
     // If 'All' is selected, we don't show subcategories (or could show all unique across all, but usually hidden is cleaner)
     const currentSubCategories = subCategoriesMap[mainCategory] || [];
 
-    // Mock Data
-    const allProducts = [
-        // Handicrafts
-        { id: 1, name: "Handwoven Bamboo Basket", price: 450, image: "https://images.unsplash.com/photo-1615875605809-90176cd63426?auto=format&fit=crop&w=800&q=80", category: "Handicrafts", subCategory: "Accessories", artisan: "Meena Devi" },
-        { id: 3, name: "Hand-Stitched Kantha Quilt", price: 2500, image: "https://images.unsplash.com/photo-1522008629172-046646b5eac8?auto=format&fit=crop&w=800&q=80", category: "Handicrafts", subCategory: "Accessories", artisan: "Radha Women's Group" },
-        { id: 4, name: "Natural Clay Water Pot", price: 350, image: "https://images.unsplash.com/photo-1610701596007-11502861dcfa?auto=format&fit=crop&w=800&q=80", category: "Handicrafts", subCategory: "Pots", artisan: "Ram Lal" },
-        { id: 5, name: "Jute Tote Bag", price: 550, image: "https://images.unsplash.com/photo-1590874102752-166258dd83ba?auto=format&fit=crop&w=800&q=80", category: "Handicrafts", subCategory: "Bags", artisan: "Self Help Group 4" },
+    const { products, backendUrl } = useContext(ShopContext);
 
-        // Natural Foods
-        { id: 2, name: "Organic Multifloral Honey", price: 600, image: "https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=800&q=80", category: "Natural Foods", subCategory: "Fruits", artisan: "Forest Collective" }, // Honey is arguably food/wellness, putting in Fruits for demo or create new sub
-        { id: 6, name: "Herbal Soap Set", price: 250, image: "https://images.unsplash.com/photo-1600857062241-98e5dba7f214?auto=format&fit=crop&w=800&q=80", category: "Natural Foods", subCategory: "Vegetables", artisan: "Priti Herbal" }, // Example re-cat
-        { id: 7, name: "Fresh Organic Apples", price: 120, image: "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&w=800&q=80", category: "Natural Foods", subCategory: "Fruits", artisan: "Hill Farmers" },
-        { id: 8, name: "Organic Carrots", price: 60, image: "https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?auto=format&fit=crop&w=800&q=80", category: "Natural Foods", subCategory: "Vegetables", artisan: "Green Earth Farm" },
-    ];
+    // Use API products instead of mock data
+    const allProducts = products;
 
     // Sync state with URL params on load/change
     useEffect(() => {
@@ -146,9 +138,14 @@ const ProductListing = () => {
                     {/* Product Grid */}
                     {filteredProducts.length > 0 ? (
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                            {filteredProducts.map(product => (
-                                <ProductCard key={product.id} {...product} />
-                            ))}
+                            {filteredProducts.map(product => {
+                                // Construct Image URL -> if product.image is array use first, prepend backendUrl
+                                const imageUrl = product.image && product.image.length > 0
+                                    ? `${backendUrl}/images/${product.image[0]}`
+                                    : "https://via.placeholder.com/300"; // Fallback
+
+                                return <ProductCard key={product._id} {...product} image={imageUrl} id={product._id} />;
+                            })}
                         </div>
                     ) : (
                         <div className="text-center py-20 bg-white rounded-xl border border-gray-200 border-dashed">
