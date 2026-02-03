@@ -58,7 +58,7 @@ const ContactUs = () => {
                                 </div>
                                 <div>
                                     <h4 className="font-semibold text-gray-800">Our Office</h4>
-                                    <p className="text-gray-600">123 Green Earth Way, Sustainable City, India</p>
+                                    <p className="text-gray-600">31, Shivji Marg, Rangpur,<br />New Delhi, India - 110037</p>
                                 </div>
                             </div>
 
@@ -68,7 +68,7 @@ const ContactUs = () => {
                                 </div>
                                 <div>
                                     <h4 className="font-semibold text-gray-800">Phone</h4>
-                                    <p className="text-gray-600">+91 98765 43210</p>
+                                    <p className="text-gray-600">+91 99584 18444</p>
                                 </div>
                             </div>
 
@@ -78,7 +78,7 @@ const ContactUs = () => {
                                 </div>
                                 <div>
                                     <h4 className="font-semibold text-gray-800">Email</h4>
-                                    <p className="text-gray-600">contact@example.com</p>
+                                    <p className="text-gray-600">contact@schoolofnature.org</p>
                                 </div>
                             </div>
                         </div>
