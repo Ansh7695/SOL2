@@ -19,7 +19,7 @@ const ContactUs = () => {
         e.preventDefault();
         setLoading(true);
         try {
-            const response = await axios.post('http://localhost:4000/api/mail/contact', {
+            const response = await axios.post('http://93.127.198.138:4000/api/mail/contact', {
                 ...formData,
                 phone: "Not provided in form" // Optional update if phone field is added later
             });

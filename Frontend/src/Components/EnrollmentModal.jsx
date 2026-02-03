@@ -49,7 +49,7 @@ const EnrollmentModal = ({ isOpen, onClose }) => {
         }
 
         try {
-            const response = await axios.post('http://localhost:4000/api/mail/enroll', data, {
+            const response = await axios.post('http://93.127.198.138:4000/api/mail/enroll', data, {
                 headers: { 'Content-Type': 'multipart/form-data' }
             });
 
