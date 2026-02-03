@@ -54,11 +54,11 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-3 text-gray-600 text-sm font-medium">
                 <span className="text-green-600">📞</span>
-                <p>+91 98765 43210</p>
+                <p> +91 995841 8444 </p>
               </div>
               <div className="flex items-center gap-3 text-gray-600 text-sm font-medium">
                 <span className="text-green-600">✉️</span>
-                <p>contactschoolofnature@gmail.com</p>
+                <p>contact@schoolofnature.org</p>
               </div>
             </div>
 
