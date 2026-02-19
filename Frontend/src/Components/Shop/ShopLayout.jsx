@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import Footer from '../Footer';
 
 const ShopLayout = ({ children }) => {
     const location = useLocation();
@@ -10,7 +9,7 @@ const ShopLayout = ({ children }) => {
         <div className="min-h-screen flex flex-col bg-gray-50">
 
             {/* Shop Specific Header */}
-            <div className="bg-white border-b border-gray-200 sticky top-[112px] z-40 shadow-sm">
+            <div className="bg-white border-b border-gray-200 sticky top-[96px] z-40 shadow-sm">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
                     <div className="flex items-center gap-6">
                         <Link to="/shop" className={`text-sm font-medium hover:text-[#5F9EA0] transition-colors ${isHome ? 'text-[#5F9EA0]' : 'text-gray-600'}`}>
@@ -29,8 +28,6 @@ const ShopLayout = ({ children }) => {
             <main className="flex-grow">
                 {children}
             </main>
-
-            <Footer />
         </div>
     );
 };

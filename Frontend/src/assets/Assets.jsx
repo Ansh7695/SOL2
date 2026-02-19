@@ -70,6 +70,10 @@ import kheader from "./KaushalHeader.jpeg"
 import kaushallogo from "./kaushalJyotiLogo.png"
 import conservationlogo from "./conservationLogo.jpg"
 import phulwariLogo from "./phulwariLogo.jpg"
+import Headerbg from "./Headerbg.jpg"
+import landscape1 from "./Headerlandscape/Landscape1.jpeg"
+import landscape2 from "./Headerlandscape/plandscape.jpeg"
+import landscape3 from "./Headerlandscape/Landscape3.jpeg"
 
 
 export const Assets = {
@@ -144,5 +148,9 @@ export const Assets = {
     kheader,
     kaushallogo,
     conservationlogo,
-    phulwariLogo
+    phulwariLogo,
+    Headerbg,
+    landscape1,
+    landscape2,
+    landscape3
 }

@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react'
 import Title from '../Components/Title'
+import CartTotal from '../Components/CartTotal'
 import { ShopContext } from '../context/ShopContext'
 import axios from 'axios'
 import { toast } from 'react-toastify'
@@ -90,7 +91,7 @@ const PlaceOrder = () => {
             {/* Right Side */}
             <div className='mt-8'>
                 <div className='mt-8 min-w-80'>
-                    {/* Payment Method Selection would go here */}
+                    <CartTotal />
                     <div className='w-full text-end mt-8'>
                         <button type='submit' className='bg-black text-white px-16 py-3 text-sm'>PLACE ORDER</button>
                     </div>

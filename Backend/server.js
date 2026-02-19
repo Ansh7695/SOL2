@@ -10,6 +10,8 @@ import mailRouter from './routes/mailRoute.js';
 import publicationRouter from './routes/publicationRoute.js';
 import blogRouter from './routes/blogRoute.js';
 
+import path from 'path';
+
 // App Config
 const app = express();
 const port = process.env.PORT || 4000;
@@ -27,7 +29,7 @@ app.use('/api/order', orderRouter);
 app.use('/api/mail', mailRouter);
 app.use('/api/publication', publicationRouter);
 app.use('/api/blog', blogRouter);
-app.use('/images', express.static('uploads'));
+app.use('/images', express.static(path.join(process.cwd(), 'uploads')));
 
 app.get('/', (req, res) => {
     res.send("API Working 🚀");

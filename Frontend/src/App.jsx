@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom'
 import Footer from './Components/Footer'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ScrollToTop from './Components/ScrollToTop'; // Added
 
 // Lazy Load Pages
 const Homepage = React.lazy(() => import('./Pages/Homepage'))
@@ -35,6 +36,7 @@ const LoadingFallback = () => (
 const App = () => {
   return (
     <div className='bg-gray-50 min-h-screen flex flex-col'>
+      <ScrollToTop />
       <ToastContainer position="bottom-right" autoClose={3000} />
       <Navbar />
       <div className='flex-grow'>

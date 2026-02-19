@@ -46,15 +46,25 @@ const ProgramApproach = () => {
                         <Link
                             to={program.link}
                             key={index}
-                            className={`${program.bgColor} p-8 rounded-xl shadow-lg transform hover:-translate-y-2 transition-transform duration-300 text-white flex flex-col items-center text-center cursor-pointer block`}
+                            className="relative group block mt-12"
                         >
-                            <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center mb-6 shadow-md overflow-hidden p-2">
-                                <img src={program.image} alt={program.title} className="w-full h-full object-contain" />
+                            {/* Paper Sheet (Back Layer) */}
+                            <div className="absolute top-[-10px] left-4 right-4 h-full bg-white border border-gray-200 rounded-xl shadow-sm transform group-hover:-translate-y-6 transition-transform duration-300 ease-out z-0"></div>
+
+                            {/* Main Folder (Front Layer) */}
+                            <div className={`${program.bgColor} relative z-10 p-8 rounded-tr-2xl rounded-br-2xl rounded-bl-2xl shadow-xl transform group-hover:-translate-y-2 transition-transform duration-300 ease-out text-white flex flex-col items-center text-center`}>
+                                {/* Folder Tab */}
+                                <div className={`absolute -top-8 left-0 w-1/3 h-8 ${program.bgColor} rounded-t-2xl`}></div>
+
+                                {/* Content */}
+                                <div className="w-24 h-24 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center mb-6 shadow-md overflow-hidden p-2 group-hover:scale-105 transition-transform duration-300">
+                                    <img src={program.image} alt={program.title} className="w-full h-full object-contain" />
+                                </div>
+                                <h3 className="text-2xl font-bold mb-4 tracking-tight">{program.title}</h3>
+                                <p className="leading-relaxed opacity-95 font-medium">
+                                    {program.description}
+                                </p>
                             </div>
-                            <h3 className="text-2xl font-bold mb-4">{program.title}</h3>
-                            <p className="leading-relaxed opacity-90">
-                                {program.description}
-                            </p>
                         </Link>
                     ))}
                 </div>

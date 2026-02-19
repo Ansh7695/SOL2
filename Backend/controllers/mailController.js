@@ -109,6 +109,13 @@ export const sendOrderEmails = async (order, userEmail) => {
             <p><strong>Customer Email:</strong> ${userEmail}</p>
             <p><strong>Amount:</strong> ₹${order.amount}</p>
             <p><strong>Status:</strong> ${order.status}</p>
+            <h3>Shipping Address:</h3>
+            <p>
+                ${order.address.firstName} ${order.address.lastName}<br/>
+                ${order.address.street}<br/>
+                ${order.address.city}, ${order.address.state} - ${order.address.zipcode}<br/>
+                Phone: ${order.address.phone}
+            </p>
             <h3>Items:</h3>
             <ul>
                 ${order.items.map(item => `<li>${item.name} x ${item.quantity} - ${item.size}</li>`).join('')}
@@ -121,6 +128,13 @@ export const sendOrderEmails = async (order, userEmail) => {
             <p>Hi,</p>
             <p>We have received your order #${order._id} and it is being processed.</p>
             <p><strong>Amount:</strong> ₹${order.amount}</p>
+            <h3>Shipping Address:</h3>
+            <p>
+                ${order.address.firstName} ${order.address.lastName}<br/>
+                ${order.address.street}<br/>
+                ${order.address.city}, ${order.address.state} - ${order.address.zipcode}<br/>
+                Phone: ${order.address.phone}
+            </p>
             <h3>Order Details:</h3>
             <ul>
                 ${order.items.map(item => `<li>${item.name} x ${item.quantity} - ${item.size}</li>`).join('')}
