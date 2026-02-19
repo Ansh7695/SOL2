@@ -19,7 +19,20 @@ connectDB();
 
 // Middleware
 app.use(express.json());
-app.use(cors());
+
+// CORS Configuration - Allow requests from frontend and admin panel
+const corsOptions = {
+    origin: [
+        'https://schoolofnature.org',
+        'https://www.schoolofnature.org',
+        'https://admin.schoolofnature.org',
+        'http://localhost:5173', // For local development
+        'http://localhost:5174'  // For local admin panel
+    ],
+    credentials: true,
+    optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
 
 // API Endpoints
 app.use('/api/user', userRouter);
