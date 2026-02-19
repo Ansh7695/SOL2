@@ -30,9 +30,15 @@ const AboutUs = () => {
                             </div>
                         </div>
 
-                        {/* Right Content - Empty White Square with Green Border */}
-                        <div className="relative flex justify-end">
-                            <div className="w-[500px] h-[500px] bg-white border-8 border-lime-600 rounded-3xl shadow-2xl">
+                        {/* Right Content - Square with Overlapping PNG Image */}
+                        <div className="relative flex justify-end pt-10 pr-10">
+                            <div className="w-[280px] h-[280px] md:w-[450px] md:h-[450px] border-8 border-lime-600 rounded-3xl shadow-xl relative bg-transparent">
+                                {/* Image overlaps the border, creating a pop-out effect */}
+                                <img
+                                    src={Assets.Manisha}
+                                    alt="Manisha Ahlawat"
+                                    className="absolute w-[120%] h-auto max-w-none object-contain z-10 -bottom-2 -left-16 drop-shadow-2xl"
+                                />
                             </div>
                         </div>
                     </div>
@@ -45,7 +51,7 @@ const AboutUs = () => {
                     <p className="text-lg md:text-xl leading-relaxed mb-8 italic">
                         "Welcome to School of Nature. Our journey began with a simple yet profound belief: that nature is our best teacher. We envisioned a platform where communities could thrive in harmony with their environment. Every step we take is guided by the principles of sustainability, empathy, and empowerment. We invite you to join us in this mission to create a greener, more equitable future for all."
                     </p>
-                    <p className="text-2xl italic text-lime-200" style={{ fontFamily: "'Dancing Script', 'Brush Script MT', cursive" }}>
+                    <p className="text-3xl italic text-lime-200" style={{ fontFamily: "'Great Vibes', cursive" }}>
                         — Manisha Ahlawat
                     </p>
                 </div>

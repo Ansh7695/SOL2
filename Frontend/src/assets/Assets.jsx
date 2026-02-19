@@ -74,6 +74,7 @@ import Headerbg from "./Headerbg.jpg"
 import landscape1 from "./Headerlandscape/Landscape1.jpeg"
 import landscape2 from "./Headerlandscape/plandscape.jpeg"
 import landscape3 from "./Headerlandscape/Landscape3.jpeg"
+import Manisha from "./Aboutus/manisha.png"
 
 
 export const Assets = {
@@ -152,5 +153,6 @@ export const Assets = {
     Headerbg,
     landscape1,
     landscape2,
-    landscape3
+    landscape3,
+    Manisha
 }

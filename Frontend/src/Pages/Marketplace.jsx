@@ -110,7 +110,7 @@ const Marketplace = () => {
     ];
 
     return (
-        <div className="bg-[#fdfbf7] min-h-screen overflow-x-hidden font-sans text-gray-800">
+        <div className="bg-[#fdfbf7] min-h-screen font-sans text-gray-800">
 
             {/* Header Section */}
             <div ref={headerRef} className="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-gray-100 py-4 px-6 shadow-sm">

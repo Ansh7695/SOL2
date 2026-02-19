@@ -67,7 +67,7 @@ const Banner3 = () => {
 
   return (
     <div
-      className=" bg-cover bg-center h-screen flex flex-col justify-center relative"
+      className=" bg-cover bg-center h-screen flex flex-col justify-center relative overflow-hidden"
       style={{ backgroundImage: `url(${Assets.Headerbg})` }}
     >
       {/* Overlay to ensure text readability if needed, though user didn't ask, usually good practice. 
