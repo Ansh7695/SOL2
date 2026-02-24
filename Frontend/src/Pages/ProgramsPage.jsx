@@ -74,7 +74,7 @@ const ProgramsPage = () => {
                         </div>
 
                         {/* Statement Card - Overlapping (Half-on/Half-off) */}
-                        <div className="absolute -bottom-10 -left-12 lg:-left-55 w-[95%] lg:w-[90%] bg-white/95 backdrop-blur-md p-8 rounded-tr-3xl rounded-bl-3xl shadow-2xl border-l-4 border-lime-500 z-30">
+                        <div className="absolute -bottom-5 -left-12 lg:-left-55 w-[95%] lg:w-[90%] bg-white/95 backdrop-blur-md p-8 rounded-tr-3xl rounded-bl-3xl shadow-2xl border-l-4 border-lime-500 z-30">
                             <p className="text-slate-700 text-lg lg:text-xl font-medium leading-relaxed">
                                 “SON follows an integrated development model where <span className="text-lime-700 font-bold">education</span>, <span className="text-blue-700 font-bold">livelihoods</span>, and <span className="text-green-700 font-bold">climate action</span> reinforce one another, creating a self-sustaining cycle of resilience.”
                             </p>
@@ -89,13 +89,13 @@ const ProgramsPage = () => {
 
             {/* 2️⃣ INTEGRATED PROGRAM FOLDER SECTION */}
             <div className="max-w-7xl mx-auto px-6 lg:px-8 min-h-screen flex flex-col justify-center">
-                <div className="text-center mb-16 -mt-30">
+                <div className="text-center mb-16 -mt-60">
                     <h3 className="text-5xl lg:text-6xl font-bold text-slate-900">Explore Our Programs</h3>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                     {programs.map((program, index) => (
-                        <div key={index} className="group relative [perspective:1000px] h-[320px] cursor-pointer">
+                        <div key={index} className="group relative [perspective:1000px] h-[320px] cursor-pointer -bottom-15">
                             <Link to={program.link} className="block w-full h-full relative [transform-style:preserve-3d] transition-transform duration-700 ease-in-out group-hover:[transform:rotateY(180deg)]">
 
                                 {/* 📂 FRONT FACE */}

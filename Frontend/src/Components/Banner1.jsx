@@ -89,7 +89,7 @@ const Banner1 = () => {
         <div className="absolute inset-0 bg-white/40 backdrop-blur-[2px]"></div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-6 md:py-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-end">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center -mt-8">
 
             {/* Left Section - Glassmorphism Content */}
             <div className="glass-card p-6 sm:p-8 md:p-10 relative z-10 transform transition-all duration-500 hover:shadow-xl border border-white/10 animate-fade-in-up w-full lg:h-[480px] flex flex-col justify-center">
@@ -145,7 +145,7 @@ const Banner1 = () => {
 
             {/* Right Section - SaaS Visual Showcase (Grid Layout) */}
             {/* Visible on LG screens and up, 12x12 grid */}
-            <div className="relative z-10 hidden lg:grid w-full h-[520px] grid-cols-12 grid-rows-12 gap-4">
+            <div className="relative z-10 hidden lg:grid w-full h-[520px] grid-cols-12 grid-rows-12 gap-4 -mt-8">
               {/* Portrait Image (Primary) - Right 50% */}
               <div className="col-span-6 col-start-7 row-start-2 row-end-9 rounded-2xl overflow-hidden shadow-2xl z-10 group relative animate-fade-in-left" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
                 {portraitImages.map((img, idx) => (

@@ -6,38 +6,38 @@ const AboutUs = () => {
     return (
         <div className="bg-gray-50 min-h-screen">
             {/* 1. MEET OUR FOUNDER - HERO SECTION */}
-            <section className="bg-white h-screen flex items-center justify-center py-16 px-6">
+            <section className="bg-white h-[calc(102vh-100px)] flex items-center justify-center py-16 px-6">
                 <div className="max-w-7xl mx-auto">
-                    <div className="grid md:grid-cols-2 gap-10 items-center">
+                    <div className="grid md:grid-cols-2 gap-8 items-center">
                         {/* Left Content */}
                         <div>
                             {/* Small Label */}
-                            <div className="flex items-center gap-2 mb-6">
+                            <div className="flex items-center gap-1 mb-6">
                                 <div className="w-3 h-3 bg-lime-600 rounded-sm"></div>
                                 <span className="text-lg font-medium text-gray-600 uppercase tracking-wide">Meet Our Founder</span>
                             </div>
 
                             {/* Large Heading */}
-                            <h1 className="text-6xl md:text-7xl font-bold text-emerald-900 mb-8 leading-tight">
+                            <h1 className="text-6xl md:text-8xl font-bold text-emerald-900 mb-6 leading-tight">
                                 MANISHA<br />AHLAWAT
                             </h1>
 
                             {/* Description Card */}
                             <div className="bg-lime-50 border-2 border-lime-200 rounded-2xl p-6">
-                                <p className="text-gray-700 leading-relaxed">
+                                <p className="text-gray-700 leading-relaxed text-xl font-bold">
                                     With over two decades of experience in social development and environmental conservation, Manisha has been a driving force behind the School of Nature. Her vision is to bridge the gap between traditional wisdom and modern sustainability practices, empowering communities to lead self-sufficient lives.
                                 </p>
                             </div>
                         </div>
 
                         {/* Right Content - Square with Overlapping PNG Image */}
-                        <div className="relative flex justify-end pt-10 pr-10">
-                            <div className="w-[280px] h-[280px] md:w-[450px] md:h-[450px] border-8 border-lime-600 rounded-3xl shadow-xl relative bg-transparent">
+                        <div className="relative flex justify-end pt-10 pr-10 mt-29.5">
+                            <div className="w-[280px] h-[280px] md:w-[400px] md:h-[450px] border-8 border-lime-600 rounded-3xl shadow-xl relative bg-transparent">
                                 {/* Image overlaps the border, creating a pop-out effect */}
                                 <img
                                     src={Assets.Manisha}
                                     alt="Manisha Ahlawat"
-                                    className="absolute w-[120%] h-auto max-w-none object-contain z-10 -bottom-2 -left-16 drop-shadow-2xl"
+                                    className="absolute w-[140%] h-auto max-w-none object-contain z-10 -bottom-2 -left-19 drop-shadow-2xl"
                                 />
                             </div>
                         </div>
@@ -51,7 +51,7 @@ const AboutUs = () => {
                     <p className="text-lg md:text-xl leading-relaxed mb-8 italic">
                         "Welcome to School of Nature. Our journey began with a simple yet profound belief: that nature is our best teacher. We envisioned a platform where communities could thrive in harmony with their environment. Every step we take is guided by the principles of sustainability, empathy, and empowerment. We invite you to join us in this mission to create a greener, more equitable future for all."
                     </p>
-                    <p className="text-3xl italic text-lime-200" style={{ fontFamily: "'Great Vibes', cursive" }}>
+                    <p className="text-3xl italic text-lime-200" style={{ fontFamily: "'BrittanySignature', cursive" }}>
                         — Manisha Ahlawat
                     </p>
                 </div>
