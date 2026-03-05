@@ -6,44 +6,46 @@ const AboutUs = () => {
     return (
         <div className="bg-gray-50 min-h-screen">
             {/* 1. MEET OUR FOUNDER - HERO SECTION */}
-            <section className="bg-white min-h-[calc(100vh-80px)] md:min-h-[calc(100vh-100px)] lg:h-[calc(102vh-100px)] flex items-center justify-center py-8 sm:py-12 md:py-16 px-4 sm:px-6">
+            <section className="bg-white py-8 sm:py-12 md:py-16 px-4 sm:px-6">
                 <div className="max-w-7xl mx-auto w-full">
                     {/* Mobile Layout */}
-                    <div className="flex flex-col md:hidden h-full min-h-[calc(100vh-120px)] justify-between">
-                        {/* Small Label - Top */}
-                        <div className="flex items-center justify-center gap-1 mb-4">
-                            <div className="w-2.5 h-2.5 bg-lime-600 rounded-sm"></div>
-                            <span className="text-sm font-medium text-gray-600 uppercase tracking-wide">Meet Our Founder</span>
-                        </div>
+                    <div className="flex flex-col md:hidden">
+                        {/* Top Section - Label, Name, and Content */}
+                        <div className="flex flex-col">
+                            {/* Small Label - Top */}
+                            <div className="flex items-center justify-center gap-1 mb-4">
+                                <div className="w-2.5 h-2.5 bg-lime-600 rounded-sm"></div>
+                                <span className="text-sm font-medium text-gray-600 uppercase tracking-wide">Meet Our Founder</span>
+                            </div>
 
-                        {/* Large Heading - Middle (Bigger and Centered) */}
-                        <div className="flex-grow flex flex-col justify-center items-center text-center">
-                            <h1 className="text-6xl sm:text-7xl font-bold text-emerald-900 mb-6 leading-tight">
+                            {/* Large Heading - Name */}
+                            <h1 className="text-5xl sm:text-6xl font-bold text-emerald-900 mb-6 leading-tight text-center">
                                 MANISHA<br />AHLAWAT
                             </h1>
 
                             {/* Description Card */}
-                            <div className="bg-lime-50 border-2 border-lime-200 rounded-xl p-4 max-w-md">
+                            <div className="bg-lime-50 border-2 border-lime-200 rounded-xl p-5 max-w-md mx-auto">
                                 <p className="text-gray-700 leading-relaxed text-sm font-bold">
                                     With over two decades of experience in social development and environmental conservation, Manisha has been a driving force behind the School of Nature.
                                 </p>
                             </div>
                         </div>
 
-                        {/* Image - Bottom (Aligned to margin) */}
-                        <div className="relative flex justify-center items-end mt-auto pt-6">
-                            <div className="w-[280px] h-[280px] border-4 border-lime-600 rounded-2xl shadow-xl relative bg-transparent">
+                        {/* Image - with visible gap (increased margin-top) */}
+                        <div className="relative flex justify-center items-end mt-16 sm:mt-20">
+                            <div className="w-[240px] h-[240px] sm:w-[280px] sm:h-[280px] border-4 border-lime-600 rounded-2xl shadow-xl relative bg-transparent">
+                                {/* Image overlaps the border, creating a pop-out effect */}
                                 <img
                                     src={Assets.Manisha}
                                     alt="Manisha Ahlawat"
-                                    className="absolute w-[140%] h-auto max-w-none object-contain z-10 -bottom-1 -left-14 drop-shadow-2xl"
+                                    className="absolute w-[135%] h-auto max-w-none object-contain z-10 -bottom-1 -left-10 sm:-left-12 drop-shadow-2xl"
                                 />
                             </div>
                         </div>
                     </div>
 
                     {/* Desktop/Tablet Layout */}
-                    <div className="hidden md:grid md:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12 items-center">
+                    <div className="hidden md:grid md:grid-cols-2 gap-10 sm:gap-8 md:gap-12 lg:gap-15 items-center min-h-[calc(100vh-200px)]">
                         {/* Left Content */}
                         <div>
                             {/* Small Label */}
