@@ -79,7 +79,7 @@ const Banner1 = () => {
     <div className="relative font-sans text-gray-800">
 
       {/* Hero Section */}
-      <header className="relative pt-1 grid items-center h-[calc(102vh-100px)] overflow-hidden">
+      <header className="relative pt-1 grid items-center min-h-[calc(100vh-80px)] md:min-h-[calc(100vh-100px)] lg:h-[calc(102vh-100px)] overflow-hidden">
         {/* Animated Background Image */}
         <div className="absolute inset-0 bg-cover bg-center animate-zoom-out"
           style={{ backgroundImage: `url(${Assets.Headerbg})` }}
@@ -88,14 +88,14 @@ const Banner1 = () => {
         {/* Overlay */}
         <div className="absolute inset-0 bg-white/40 backdrop-blur-[2px]"></div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-6 md:py-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center -mt-8">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-8 w-full py-4 sm:py-6 md:py-8 lg:py-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-16 items-center md:-mt-4 lg:-mt-8">
 
             {/* Left Section - Glassmorphism Content */}
-            <div className="glass-card p-6 sm:p-8 md:p-10 relative z-10 transform transition-all duration-500 hover:shadow-xl border border-white/10 animate-fade-in-up w-full lg:h-[480px] flex flex-col justify-center">
-              <div className="space-y-5">
-                <div className="h-32 sm:h-36 md:h-40 lg:h-32 py-4"> {/* Explicit height for typewriter */}
-                  <h1 className="text-3xl sm:text-4xl lg:text-4xl font-extrabold text-gray-900 tracking-tight leading-tight">
+            <div className="glass-card p-4 sm:p-6 md:p-8 lg:p-10 relative z-10 transform transition-all duration-500 hover:shadow-xl border border-white/10 animate-fade-in-up w-full lg:h-[480px] flex flex-col justify-center">
+              <div className="space-y-3 sm:space-y-4 md:space-y-5">
+                <div className="min-h-[100px] sm:min-h-[120px] md:min-h-[140px] lg:min-h-[120px] py-2 sm:py-3 md:py-4 flex items-center">
+                  <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
                     {typewriterTexts[textIndex].substring(0, charIndex)}
                     <span className="inline-block w-0 relative">
                       <span className="animate-pulse text-green-600 absolute bottom-0 left-0">|</span>
@@ -103,26 +103,26 @@ const Banner1 = () => {
                   </h1>
                 </div>
 
-                <p className="text-base sm:text-lg text-gray-700 leading-relaxed font-medium bg-green-900/20 p-2 sm:p-3 rounded-lg block">
+                <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed font-medium bg-green-900/20 p-2 sm:p-3 md:p-4 rounded-lg block">
                   To build a climate-resilient and eco-sensitive society where marginalized communities, especially women and children, live with dignity, equality, and harmony with nature.
                 </p>
 
-                <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2 sm:pt-4">
                   <button
                     onClick={scrollToNextSection}
-                    className="bg-lime-500 hover:bg-lime-600 text-white px-8 py-3 rounded-xl font-semibold shadow-lg hover:shadow-green-500/30 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2 group w-full sm:w-auto">
+                    className="bg-lime-500 hover:bg-lime-600 text-white px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 text-sm sm:text-base rounded-xl font-semibold shadow-lg hover:shadow-green-500/30 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2 group w-full sm:w-auto">
                     Our Story
                     <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                   </button>
                   <button
                     onClick={() => navigate('/contact-us')}
-                    className="px-8 py-3 rounded-xl font-semibold border-2 border-gray-800 text-gray-800 hover:bg-gray-900 hover:text-white transition-all w-full sm:w-auto">
+                    className="px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 text-sm sm:text-base rounded-xl font-semibold border-2 border-gray-800 text-gray-800 hover:bg-gray-900 hover:text-white transition-all w-full sm:w-auto">
                     Contact Me
                   </button>
                 </div>
 
-                <div className="pt-6 border-t border-gray-200/50 mt-6">
-                  <div className="flex items-center gap-6 justify-center sm:justify-start">
+                <div className="pt-4 sm:pt-6 border-t border-gray-200/50 mt-3 sm:mt-6">
+                  <div className="flex items-center gap-4 sm:gap-6 justify-center sm:justify-start">
                     {[
                       { Icon: Instagram, href: "#", label: "Instagram" },
                       { Icon: Facebook, href: "#", label: "Facebook" },
@@ -135,7 +135,7 @@ const Banner1 = () => {
                         aria-label={label}
                         className="text-gray-600 hover:text-green-700 hover:scale-110 transition-all duration-300 drop-shadow-sm"
                       >
-                        <Icon size={24} />
+                        <Icon size={20} className="sm:w-6 sm:h-6" />
                       </a>
                     ))}
                   </div>
@@ -145,7 +145,7 @@ const Banner1 = () => {
 
             {/* Right Section - SaaS Visual Showcase (Grid Layout) */}
             {/* Visible on LG screens and up, 12x12 grid */}
-            <div className="relative z-10 hidden lg:grid w-full h-[520px] grid-cols-12 grid-rows-12 gap-4 -mt-8">
+            <div className="relative z-10 hidden lg:grid w-full h-[480px] xl:h-[520px] grid-cols-12 grid-rows-12 gap-3 lg:gap-4 lg:-mt-8">
               {/* Portrait Image (Primary) - Right 50% */}
               <div className="col-span-6 col-start-7 row-start-2 row-end-9 rounded-2xl overflow-hidden shadow-2xl z-10 group relative animate-fade-in-left" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
                 {portraitImages.map((img, idx) => (
@@ -160,34 +160,34 @@ const Banner1 = () => {
               </div>
 
               {/* Floating Statistic Badges (Overlapping Portrait) */}
-              <div className="col-start-10 col-end-13 row-start-5 row-span-4 z-20 flex flex-col gap-4 translate-x-8">
+              <div className="col-start-10 col-end-13 row-start-5 row-span-4 z-20 flex flex-col gap-3 lg:gap-4 translate-x-6 lg:translate-x-8">
                 {[
                   { label: "Since", value: "2020" },
                   { label: "Learning Centers", value: "3-5" },
                   { label: "Baalmitras Engaged", value: "Upto 13" }
                 ].map((stat, i) => (
-                  <div key={i} className="bg-green-900/90 backdrop-blur-md text-white px-4 py-2 rounded-l-full shadow-lg transform transition-all hover:translate-x-[-5px] hover:bg-green-800 flex items-center gap-3 border-l-4 border-green-400 w-max self-end animate-fade-in-right" style={{ animationDelay: `${0.8 + (i * 0.1)}s`, animationFillMode: 'forwards' }}>
+                  <div key={i} className="bg-green-900/90 backdrop-blur-md text-white px-3 lg:px-4 py-1.5 lg:py-2 rounded-l-full shadow-lg transform transition-all hover:translate-x-[-5px] hover:bg-green-800 flex items-center gap-2 lg:gap-3 border-l-4 border-green-400 w-max self-end animate-fade-in-right" style={{ animationDelay: `${0.8 + (i * 0.1)}s`, animationFillMode: 'forwards' }}>
                     <div>
-                      <div className="text-[10px] text-green-200 font-medium">{stat.label}</div>
-                      <div className="text-base font-bold leading-none">{stat.value}</div>
+                      <div className="text-[9px] lg:text-[10px] text-green-200 font-medium">{stat.label}</div>
+                      <div className="text-sm lg:text-base font-bold leading-none">{stat.value}</div>
                     </div>
                   </div>
                 ))}
               </div>
 
               {/* Metrics / Growth Card (Left 50%) */}
-              <div className="col-span-6 col-start-1 row-start-2 row-end-6 bg-white/95 backdrop-blur-xl p-6 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-white/50 z-30 transition-transform hover:-translate-y-1 h-full flex flex-col justify-center animate-fade-in-up" style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}>
+              <div className="col-span-6 col-start-1 row-start-2 row-end-6 bg-white/95 backdrop-blur-xl p-4 lg:p-5 xl:p-6 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-white/50 z-30 transition-transform hover:-translate-y-1 h-full flex flex-col justify-center animate-fade-in-up" style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}>
                 <div className="flex items-end gap-2">
-                  <div className="text-6xl font-bold text-gray-900">250+</div>
+                  <div className="text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900">250+</div>
                 </div>
-                <div className="text-lg text-gray-500 font-medium mt-1">Women Engaged in Livelihoods</div>
+                <div className="text-base lg:text-lg text-gray-500 font-medium mt-1">Women Engaged in Livelihoods</div>
               </div>
 
               {/* Secondary Metrics Card (Below First) */}
-              <div className="col-span-6 col-start-1 row-start-6 row-end-9 bg-white/95 backdrop-blur-xl p-6 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-white/50 z-30 transition-transform hover:-translate-y-1 h-full flex items-center justify-between animate-fade-in-up" style={{ animationDelay: '0.6s', animationFillMode: 'forwards' }}>
+              <div className="col-span-6 col-start-1 row-start-6 row-end-9 bg-white/95 backdrop-blur-xl p-4 lg:p-5 xl:p-6 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-white/50 z-30 transition-transform hover:-translate-y-1 h-full flex items-center justify-between animate-fade-in-up" style={{ animationDelay: '0.6s', animationFillMode: 'forwards' }}>
                 <div>
-                  <div className="text-5xl font-bold text-gray-900">300+</div>
-                  <div className="text-lg text-gray-500 font-medium mb-1">Children Supported</div>
+                  <div className="text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900">300+</div>
+                  <div className="text-base lg:text-lg text-gray-500 font-medium mb-1">Children Supported</div>
                 </div>
               </div>
 
@@ -205,9 +205,9 @@ const Banner1 = () => {
             </div>
 
             {/* Mobile & Tablet - Better Stacked Layout (Shown on screen < lg) */}
-            <div className="lg:hidden mt-8 space-y-6 animate-fade-in-up">
-              <div className="bg-white/50 backdrop-blur-sm rounded-2xl p-4 sm:p-6 border border-white/40 shadow-xl">
-                <div className="relative h-64 sm:h-80 md:h-96 rounded-xl overflow-hidden shadow-md mb-6">
+            <div className="lg:hidden mt-6 sm:mt-8 space-y-4 sm:space-y-6 animate-fade-in-up">
+              <div className="bg-white/50 backdrop-blur-sm rounded-2xl p-3 sm:p-4 md:p-6 border border-white/40 shadow-xl">
+                <div className="relative h-56 sm:h-64 md:h-80 rounded-xl overflow-hidden shadow-md mb-4 sm:mb-6">
                   {/* Rotating Images for Mobile */}
                   {portraitImages.map((img, idx) => (
                     <img
@@ -218,20 +218,20 @@ const Banner1 = () => {
                     />
                   ))}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                  <div className="absolute bottom-4 left-4 text-white">
-                    <p className="font-bold text-lg">Featured Projects</p>
-                    <p className="text-sm opacity-90">Exploring the nature</p>
+                  <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 text-white">
+                    <p className="font-bold text-base sm:text-lg">Featured Projects</p>
+                    <p className="text-xs sm:text-sm opacity-90">Exploring the nature</p>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-white/80 p-4 rounded-xl shadow-sm text-center">
-                    <div className="text-2xl font-bold text-green-600">98%</div>
-                    <div className="text-xs text-gray-600 uppercase font-bold tracking-wide">Satisfaction</div>
+                <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                  <div className="bg-white/80 p-3 sm:p-4 rounded-xl shadow-sm text-center">
+                    <div className="text-xl sm:text-2xl font-bold text-green-600">250+</div>
+                    <div className="text-[10px] sm:text-xs text-gray-600 uppercase font-bold tracking-wide">Women Engaged</div>
                   </div>
-                  <div className="bg-white/80 p-4 rounded-xl shadow-sm text-center">
-                    <div className="text-2xl font-bold text-blue-600">14K+</div>
-                    <div className="text-xs text-gray-600 uppercase font-bold tracking-wide">Projects</div>
+                  <div className="bg-white/80 p-3 sm:p-4 rounded-xl shadow-sm text-center">
+                    <div className="text-xl sm:text-2xl font-bold text-blue-600">300+</div>
+                    <div className="text-[10px] sm:text-xs text-gray-600 uppercase font-bold tracking-wide">Children</div>
                   </div>
                 </div>
               </div>
