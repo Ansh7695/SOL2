@@ -89,12 +89,12 @@ const Banner1 = () => {
         <div className="absolute inset-0 bg-white/40 backdrop-blur-[2px]"></div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-8 w-full py-4 sm:py-6 md:py-8 lg:py-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-16 items-center md:-mt-4 lg:-mt-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-16 items-stretch md:-mt-4 lg:-mt-8">
 
             {/* Left Section - Glassmorphism Content */}
-            <div className="glass-card p-4 sm:p-6 md:p-8 lg:p-10 relative z-10 transform transition-all duration-500 hover:shadow-xl border border-white/10 animate-fade-in-up w-full lg:h-[480px] flex flex-col justify-center">
+            <div className="glass-card p-4 sm:p-6 md:p-8 lg:p-10 relative z-10 transform transition-all duration-500 hover:shadow-xl border border-white/10 animate-fade-in-up w-full lg:min-h-[480px] h-full flex flex-col justify-center">
               <div className="space-y-3 sm:space-y-4 md:space-y-5">
-                <div className="min-h-[100px] sm:min-h-[120px] md:min-h-[140px] lg:min-h-[120px] py-2 sm:py-3 md:py-4 flex items-center">
+                <div className="h-[100px] sm:h-[120px] md:h-[140px] lg:h-[160px] xl:h-[160px] py-2 sm:py-3 md:py-4 flex items-center">
                   <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
                     {typewriterTexts[textIndex].substring(0, charIndex)}
                     <span className="inline-block w-0 relative">
@@ -145,7 +145,7 @@ const Banner1 = () => {
 
             {/* Right Section - SaaS Visual Showcase (Grid Layout) */}
             {/* Visible on LG screens and up, 12x12 grid */}
-            <div className="relative z-10 hidden lg:grid w-full h-[480px] xl:h-[520px] grid-cols-12 grid-rows-12 gap-3 lg:gap-4 lg:-mt-8">
+            <div className="relative z-10 hidden lg:grid w-full lg:min-h-[480px] h-full grid-cols-12 grid-rows-12 gap-3 lg:gap-4 lg:-mt-8">
               {/* Portrait Image (Primary) - Right 50% */}
               <div className="col-span-6 col-start-7 row-start-2 row-end-9 rounded-2xl overflow-hidden shadow-2xl z-10 group relative animate-fade-in-left" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
                 {portraitImages.map((img, idx) => (
@@ -192,7 +192,7 @@ const Banner1 = () => {
               </div>
 
               {/* Landscape Image Card (Bottom Full Width) */}
-              <div className="col-span-12 row-start-9 row-end-13 rounded-2xl overflow-hidden shadow-xl z-20 border-4 border-white transform transition-transform hover:scale-[1.01] relative animate-fade-in-up" style={{ animationDelay: '0.8s', animationFillMode: 'forwards' }}>
+              <div className="col-span-12 row-start-9 row-end-15 rounded-2xl overflow-hidden shadow-xl z-20 border-4 border-white transform transition-transform hover:scale-[1.01] relative animate-fade-in-up" style={{ animationDelay: '0.8s', animationFillMode: 'forwards' }}>
                 {landscapeImages.map((img, idx) => (
                   <img
                     key={idx}

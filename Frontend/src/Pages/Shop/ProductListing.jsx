@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, Link } from 'react-router-dom';
 import ShopLayout from '../../Components/Shop/ShopLayout';
 import ProductCard from '../../Components/Shop/ProductCard';
 import { ShopContext } from '../../context/ShopContext';
@@ -221,9 +221,9 @@ const ProductListing = () => {
                                                         <span className="text-xs text-gray-400 ml-1">({Math.floor(Math.random() * 50) + 10})</span>
                                                     </div>
 
-                                                    <button className="w-full py-2 rounded-lg border border-emerald-100 text-emerald-800 text-sm font-bold hover:bg-emerald-600 hover:text-white transition-colors">
+                                                    <Link to={`/shop/product/${product._id}`} className="w-full block text-center py-2 rounded-lg border border-emerald-100 text-emerald-800 text-sm font-bold hover:bg-emerald-600 hover:text-white transition-colors">
                                                         View Details
-                                                    </button>
+                                                    </Link>
                                                 </div>
                                             </div>
                                         );

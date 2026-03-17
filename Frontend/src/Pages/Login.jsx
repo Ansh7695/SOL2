@@ -21,14 +21,20 @@ const Login = () => {
     const [email, setEmail] = useState('')
     const [showPassword, setShowPassword] = useState(false)
 
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
     const onSubmitHandler = async (event) => {
         event.preventDefault();
+        if (isSubmitting) return; // Prevent multiple submissions
+        
+        setIsSubmitting(true);
         try {
             if (currentState === 'Sign Up') {
                 const response = await axios.post(backendUrl + '/api/user/register', { name, email, password })
                 if (response.data.success) {
                     setToken(response.data.token)
                     localStorage.setItem('token', response.data.token)
+                    toast.success("Account created successfully!");
                 } else {
                     toast.error(response.data.message)
                 }
@@ -37,6 +43,7 @@ const Login = () => {
                 if (response.data.success) {
                     setToken(response.data.token)
                     localStorage.setItem('token', response.data.token)
+                    toast.success("Logged in successfully!");
                 } else {
                     toast.error(response.data.message)
                 }
@@ -44,15 +51,16 @@ const Login = () => {
         } catch (error) {
             console.log(error);
             toast.error(error.message)
+        } finally {
+            setIsSubmitting(false);
         }
     }
 
     useEffect(() => {
         // Only redirect if token exists and we're actually logged in
-        // Commented out to allow viewing the login page
-        // if (token) {
-        //     navigate('/')
-        // }
+        if (token) {
+            navigate('/')
+        }
     }, [token, navigate])
 
     return (
@@ -171,9 +179,12 @@ const Login = () => {
                         {/* Submit Button */}
                         <button 
                             type="submit"
-                            className='w-full bg-gradient-to-r from-lime-600 to-green-600 hover:from-lime-700 hover:to-green-700 text-white font-semibold py-3 sm:py-3.5 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center gap-2 text-sm sm:text-base'
+                            disabled={isSubmitting}
+                            className={`w-full bg-gradient-to-r from-lime-600 to-green-600 hover:from-lime-700 hover:to-green-700 text-white font-semibold py-3 sm:py-3.5 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center gap-2 text-sm sm:text-base ${isSubmitting ? 'opacity-70 cursor-not-allowed transform-none hover:-translate-y-0' : ''}`}
                         >
-                            {currentState === 'Login' ? (
+                            {isSubmitting ? (
+                                <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                            ) : currentState === 'Login' ? (
                                 <>
                                     <LogIn className='w-5 h-5' />
                                     Sign In

@@ -1,4 +1,5 @@
-// Placeholder for assets
+import Son_Logo from './Son_Logo.png'
+
 export const assets = {
-    // Add exported images here
+    Son_Logo
 }

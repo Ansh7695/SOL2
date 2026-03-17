@@ -1,31 +1,29 @@
 import React, { useContext } from 'react'
 import { ShopContext } from '../context/ShopContext'
-import Title from './Title';
 
 const CartTotal = () => {
 
     const { currency, delivery_fee, getCartAmount } = useContext(ShopContext);
 
     return (
-        <div className='w-full'>
-            <div className='text-2xl'>
-                <Title text1={'CART'} text2={'TOTALS'} />
-            </div>
-
-            <div className='flex flex-col gap-2 mt-2 text-sm'>
-                <div className='flex justify-between'>
-                    <p>Subtotal</p>
-                    <p>{currency}{getCartAmount()}.00</p>
+        <div className='w-full text-gray-700'>
+            <div className='flex flex-col gap-4 text-sm'>
+                <div className='flex justify-between items-center'>
+                    <p className="text-gray-500">Subtotal</p>
+                    <p className="font-medium text-gray-900">{currency}{getCartAmount()}.00</p>
                 </div>
-                <hr />
-                <div className='flex justify-between'>
-                    <p>Shipping Fee</p>
-                    <p>{currency}{delivery_fee}.00</p>
+                <div className='flex justify-between items-center'>
+                    <p className="text-gray-500">Shipping Fee</p>
+                    <p className="font-medium text-gray-900">{currency}{delivery_fee}.00</p>
                 </div>
-                <hr />
-                <div className='flex justify-between'>
-                    <b>Total</b>
-                    <b>{currency}{getCartAmount() === 0 ? 0 : getCartAmount() + delivery_fee}.00</b>
+                
+                <div className="border-t border-dashed border-gray-200 my-2"></div>
+                
+                <div className='flex justify-between items-center'>
+                    <span className="text-base font-bold text-gray-900">Total</span>
+                    <span className="text-xl font-bold text-emerald-700">
+                        {currency}{getCartAmount() === 0 ? 0 : getCartAmount() + delivery_fee}.00
+                    </span>
                 </div>
             </div>
         </div>

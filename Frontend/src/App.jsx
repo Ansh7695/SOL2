@@ -26,6 +26,7 @@ const Login = React.lazy(() => import('./Pages/Login'))
 const PlaceOrder = React.lazy(() => import('./Pages/PlaceOrder'))
 const Orders = React.lazy(() => import('./Pages/Orders'))
 const Cart = React.lazy(() => import('./Pages/Cart'))
+const Profile = React.lazy(() => import('./Pages/Profile'))
 
 const LoadingFallback = () => (
   <div className="flex items-center justify-center min-h-[60vh]">
@@ -64,6 +65,7 @@ const App = () => {
             <Route path='/place-order' element={<PlaceOrder />} />
             <Route path='/orders' element={<Orders />} />
             <Route path='/cart' element={<Cart />} />
+            <Route path='/profile' element={<Profile />} />
           </Routes>
         </Suspense>
       </div>

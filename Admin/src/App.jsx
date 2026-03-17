@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 // Lazy Load Pages
 const Add = React.lazy(() => import('./pages/Add'))
 const List = React.lazy(() => import('./pages/List'))
+const Edit = React.lazy(() => import('./pages/Edit'))
 const Orders = React.lazy(() => import('./pages/Orders'))
 const AddBlog = React.lazy(() => import('./pages/AddBlog'))
 const ListBlogs = React.lazy(() => import('./pages/ListBlogs'))
@@ -19,8 +20,8 @@ export const backendUrl = import.meta.env.VITE_BACKEND_URL || ""
 export const currency = '$'
 
 const LoadingFallback = () => (
-    <div className='flex items-center justify-center h-full w-full p-10'>
-        <div className='w-12 h-12 border-4 border-gray-300 border-t-gray-800 rounded-full animate-spin'></div>
+    <div className='flex items-center justify-center min-h-[60vh] w-full'>
+        <div className='w-16 h-16 border-4 border-[#5F9EA0] border-t-transparent rounded-full animate-spin'></div>
     </div>
 )
 
@@ -47,6 +48,7 @@ const App = () => {
                                 <Routes>
                                     <Route path='/add' element={<Add token={token} />} />
                                     <Route path='/list' element={<List token={token} />} />
+                                    <Route path='/edit/:id' element={<Edit token={token} />} />
                                     <Route path='/orders' element={<Orders token={token} />} />
 
                                     {/* Blog Routes */}

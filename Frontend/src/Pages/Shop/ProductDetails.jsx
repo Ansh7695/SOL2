@@ -1,52 +1,84 @@
-import React from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import ShopLayout from '../../Components/Shop/ShopLayout';
+import { ShopContext } from '../../context/ShopContext';
 
 const ProductDetails = () => {
     const { id } = useParams();
+    const { products, backendUrl, addToCart } = useContext(ShopContext);
+    const [selectedImg, setSelectedImg] = useState('');
+    const [selectedSize, setSelectedSize] = useState('');
 
-    // In a real app, fetch data based on ID. For now, we mock.
-    const product = {
-        id: id,
-        name: "Handwoven Bamboo Basket",
-        price: 450,
-        image: "https://images.unsplash.com/photo-1615875605809-90176cd63426?auto=format&fit=crop&w=1200&q=80",
-        category: "Crafts",
-        artisan: "Meena Devi",
-        description: "This beautiful bamboo basket is handcrafted by Meena Devi, a skilled artisan from our rural collective. It takes approximately 3 days to weave this intricate pattern. Perfect for storage or as a decorative planter.",
-        features: [
-            "100% Natural Bamboo",
-            "Handworn with traditional techniques",
-            "Eco-friendly and biodegradable",
-            "Supports rural women's livelihood"
-        ]
-    };
+    useEffect(() => {
+        setSelectedImg('');
+        setSelectedSize('');
+    }, [id]);
+
+    const realProduct = products?.find(p => p._id === id);
+
+    let product;
+
+    if (realProduct) {
+        let imageUrl = "https://via.placeholder.com/300";
+        if (realProduct.image && Array.isArray(realProduct.image) && realProduct.image.length > 0) {
+            imageUrl = realProduct.image[0].startsWith('http') ? realProduct.image[0] : `${backendUrl}/images/${realProduct.image[0]}`;
+        }
+        
+        let allImages = [imageUrl];
+        if (realProduct.image && Array.isArray(realProduct.image)) {
+            allImages = realProduct.image.map(img => img.startsWith('http') ? img : `${backendUrl}/images/${img}`);
+        }
+
+        product = {
+            id: realProduct._id,
+            name: realProduct.name,
+            price: realProduct.price,
+            image: imageUrl,
+            images: allImages,
+            category: realProduct.category,
+            artisan: realProduct.subCategory || "Nature Artisans",
+            description: realProduct.description,
+            features: realProduct.sizes && realProduct.sizes.length > 0 ? realProduct.sizes : ["100% Authentic", "High Quality", "Sustainable"]
+        };
+    } else {
+        // Fallback for demo products or loading state
+        product = {
+            id: id,
+            name: "Loading Product...",
+            price: 0,
+            image: "https://via.placeholder.com/300",
+            images: [],
+            category: "Category",
+            artisan: "Artisan",
+            description: "Loading description...",
+            features: []
+        };
+    }
 
     return (
         <ShopLayout>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
                 <div className="flex flex-col md:flex-row gap-12">
                     {/* Image Gallery Side */}
-                    <div className="w-full md:w-1/2">
-                        <div className="rounded-2xl overflow-hidden shadow-lg aspect-square bg-gray-100">
+                    <div className="w-full md:w-[40%]">
+                        <div className="rounded-2xl overflow-hidden shadow-sm border border-gray-100 aspect-square bg-gray-50 flex items-center justify-center p-4">
                             <img
-                                src={product.image}
+                                src={selectedImg || product.image}
                                 alt={product.name}
-                                className="w-full h-full object-cover"
+                                className="max-w-full max-h-full object-contain"
                             />
                         </div>
-                        <div className="grid grid-cols-4 gap-4 mt-4">
-                            {/* Mock thumbnails */}
-                            {[1, 2, 3, 4].map(i => (
-                                <div key={i} className="rounded-lg overflow-hidden aspect-square cursor-pointer opacity-70 hover:opacity-100 border border-transparent hover:border-blue-500 transition-all">
-                                    <img src={product.image} className="w-full h-full object-cover" />
+                        <div className="flex gap-3 mt-4 overflow-x-auto pb-2">
+                            {product.images.map((img, i) => (
+                                <div key={i} onClick={() => setSelectedImg(img)} className={`min-w-[80px] w-20 h-20 rounded-lg overflow-hidden cursor-pointer transition-all bg-gray-50 p-1 border ${selectedImg === img || (!selectedImg && i === 0) ? 'border-emerald-500 opacity-100' : 'border-gray-200 opacity-70 hover:opacity-100 hover:border-emerald-300'}`}>
+                                    <img src={img} alt={`${product.name} thumbnail ${i + 1}`} className="w-full h-full object-contain" />
                                 </div>
                             ))}
                         </div>
                     </div>
 
                     {/* Product Info Side */}
-                    <div className="w-full md:w-1/2">
+                    <div className="w-full md:w-[60%] md:pl-8">
                         <div className="mb-6">
                             <span className="bg-[#5F9EA0]/10 text-[#5F9EA0] px-3 py-1 rounded-full text-sm font-semibold uppercase tracking-wide">
                                 {product.category}
@@ -64,19 +96,32 @@ const ProductDetails = () => {
                         </div>
 
                         <div className="mb-8">
-                            <h3 className="font-bold text-gray-900 mb-3">Key Features:</h3>
-                            <ul className="list-disc list-inside space-y-2 text-gray-600">
-                                {product.features.map((feature, idx) => (
-                                    <li key={idx}>{feature}</li>
+                            <h3 className="font-bold text-gray-900 mb-3 uppercase text-sm tracking-wider">Available Sizes / Options</h3>
+                            <div className="flex flex-wrap gap-2">
+                                {product.features.map((size, idx) => (
+                                    <button 
+                                        key={idx} 
+                                        onClick={() => setSelectedSize(size)}
+                                        className={`px-4 py-2 border rounded-md text-sm font-medium transition-colors cursor-pointer ${
+                                            selectedSize === size 
+                                                ? 'border-emerald-500 bg-emerald-50 text-emerald-700' 
+                                                : 'border-gray-200 text-gray-700 hover:border-emerald-500 bg-white'
+                                        }`}
+                                    >
+                                        {size}
+                                    </button>
                                 ))}
-                            </ul>
+                            </div>
                         </div>
 
                         <div className="flex gap-4">
-                            <button className="flex-1 bg-[#2c5282] text-white py-4 rounded-xl font-bold text-lg hover:bg-[#1a365d] shadow-lg transform active:scale-95 transition-all">
+                            <button 
+                                onClick={() => addToCart(product.id, selectedSize)}
+                                className="flex-1 bg-[#2c5282] text-white py-4 rounded-xl font-bold text-lg hover:bg-[#1a365d] shadow-lg transform active:scale-95 transition-all"
+                            >
                                 Add to Cart
                             </button>
-                            <button className="px-6 py-4 rounded-xl border-2 border-gray-200 hover:border-gray-400 hover:bg-gray-50 transition-all">
+                            <button className="px-6 py-4 rounded-xl border-2 border-gray-200 hover:border-gray-400 hover:bg-gray-50 transition-all focus:outline-none focus:ring-2 focus:ring-emerald-500">
                                 ❤️
                             </button>
                         </div>

@@ -6,8 +6,8 @@ const AboutUs = () => {
     return (
         <div className="bg-gray-50 min-h-screen">
             {/* 1. MEET OUR FOUNDER - HERO SECTION */}
-            <section className="bg-white py-8 sm:py-12 md:py-16 px-4 sm:px-6">
-                <div className="max-w-7xl mx-auto w-full">
+            <section className="bg-white py-6 sm:py-8 md:py-8 px-4 sm:px-6">
+                <div className="max-w-7xl mx-auto w-full h-133">
                     {/* Mobile Layout */}
                     <div className="flex flex-col md:hidden">
                         {/* Top Section - Label, Name, and Content */}
@@ -19,7 +19,7 @@ const AboutUs = () => {
                             </div>
 
                             {/* Large Heading - Name */}
-                            <h1 className="text-5xl sm:text-6xl font-bold text-emerald-900 mb-6 leading-tight text-center">
+                            <h1 className="text-5xl sm:text-6xl font-bold text-emerald-900 mb-4 leading-tight text-center">
                                 MANISHA<br />AHLAWAT
                             </h1>
 
@@ -45,7 +45,7 @@ const AboutUs = () => {
                     </div>
 
                     {/* Desktop/Tablet Layout */}
-                    <div className="hidden md:grid md:grid-cols-2 gap-10 sm:gap-8 md:gap-12 lg:gap-15 items-center min-h-[calc(100vh-200px)]">
+                    <div className="hidden md:grid md:grid-cols-2 gap-10 sm:gap-8 md:gap-12 lg:gap-15 items-center min-h-[calc(100vh-280px)]">
                         {/* Left Content */}
                         <div>
                             {/* Small Label */}
@@ -68,7 +68,7 @@ const AboutUs = () => {
                         </div>
 
                         {/* Right Content - Square with Overlapping PNG Image */}
-                        <div className="relative flex justify-center md:justify-end pt-6 sm:pt-8 md:pt-10 pr-0 sm:pr-6 md:pr-10 mt-8 md:mt-16 lg:mt-29.5">
+                        <div className="relative flex justify-center md:justify-end pt-4 sm:pt-6 md:pt-8 pr-0 sm:pr-6 md:pr-10 mt-6 md:mt-12 lg:mt-20">
                             <div className="w-[220px] h-[220px] sm:w-[260px] sm:h-[260px] md:w-[320px] md:h-[360px] lg:w-[400px] lg:h-[450px] border-4 sm:border-6 md:border-8 border-lime-600 rounded-2xl sm:rounded-3xl shadow-xl relative bg-transparent">
                                 {/* Image overlaps the border, creating a pop-out effect */}
                                 <img

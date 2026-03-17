@@ -159,7 +159,7 @@ const ShopLanding = () => {
     };
 
     const handleCardClick = (position, productId) => {
-        if (position === 0 && !isDragging) navigate(`/product/${productId}`);
+        if (position === 0 && !isDragging) navigate(`/shop/product/${productId}`);
         else if (!isDragging) setCurrentIndex((prev) => (prev + position + totalProducts) % totalProducts);
     };
 

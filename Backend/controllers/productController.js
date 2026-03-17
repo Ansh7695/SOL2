@@ -74,4 +74,40 @@ const singleProduct = async (req, res) => {
     }
 }
 
-export { listProducts, addProduct, removeProduct, singleProduct }
+// Function for editing product
+const editProduct = async (req, res) => {
+    try {
+        const { id, name, description, price, category, subCategory, sizes, bestseller } = req.body;
+        
+        const updateData = {
+            name, 
+            description, 
+            price: Number(price), 
+            category, 
+            subCategory, 
+            sizes: JSON.parse(sizes), 
+            bestseller: bestseller === "true" || bestseller === true
+        };
+
+        // Note: not handling image updates here yet to keep it simple, just text data.
+        await productModel.findByIdAndUpdate(id, updateData);
+        res.json({ success: true, message: "Product Updated" });
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: error.message });
+    }
+}
+
+// Function for toggling bestseller status
+const toggleBestseller = async (req, res) => {
+    try {
+        const { id, bestseller } = req.body;
+        await productModel.findByIdAndUpdate(id, { bestseller });
+        res.json({ success: true, message: "Bestseller status updated" })
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: error.message })
+    }
+}
+
+export { listProducts, addProduct, removeProduct, singleProduct, toggleBestseller, editProduct }

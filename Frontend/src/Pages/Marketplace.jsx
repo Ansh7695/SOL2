@@ -97,7 +97,7 @@ const Marketplace = () => {
     const categories = [
         {
             name: 'Handicrafts',
-            image: "https://images.unsplash.com/photo-1615875605809-90176cd63426?auto=format&fit=crop&w=800&q=80",
+            image: "https://images.unsplash.com/photo-1610701596007-11502861dcfa?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
             desc: "Traditional artisan crafts",
             color: "from-orange-500/80 to-red-600/80"
         },
