@@ -18,6 +18,9 @@ const ShopLayout = ({ children }) => {
                         <Link to="/shop/products" className={`text-sm font-medium hover:text-[#5F9EA0] transition-colors ${location.pathname === '/shop/products' ? 'text-[#5F9EA0]' : 'text-gray-600'}`}>
                             All Products
                         </Link>
+                        <Link to="/wishlist" className={`text-sm font-medium hover:text-[#5F9EA0] transition-colors ${location.pathname === '/wishlist' ? 'text-[#5F9EA0]' : 'text-gray-600'}`}>
+                            Wishlist
+                        </Link>
                     </div>
                     <div className="text-sm text-gray-500 italic hidden sm:block">
                         Empowering Artisans, Transforming Lives

@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { useSearchParams, Link } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import ShopLayout from '../../Components/Shop/ShopLayout';
-import ProductCard from '../../Components/Shop/ProductCard';
 import { ShopContext } from '../../context/ShopContext';
 import { Filter, Star, X } from 'lucide-react';
 
 const ProductListing = () => {
     const [searchParams, setSearchParams] = useSearchParams();
-    const { products, backendUrl } = useContext(ShopContext);
+    const { products, backendUrl, addToCartWithDefault, buyNow } = useContext(ShopContext);
+    const navigate = useNavigate();
 
     // Initial Filter States
     const initialCategory = searchParams.get('category') || 'All';
@@ -197,7 +197,19 @@ const ProductListing = () => {
                                         const mockRating = (product._id.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0) % 5) + 1;
 
                                         return (
-                                            <div key={product._id} className="group relative bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                                            <div
+                                                key={product._id}
+                                                className="group relative bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+                                                onClick={() => navigate(`/shop/product/${product._id}`)}
+                                                role="button"
+                                                tabIndex={0}
+                                                onKeyDown={(e) => {
+                                                    if (e.key === 'Enter' || e.key === ' ') {
+                                                        e.preventDefault();
+                                                        navigate(`/shop/product/${product._id}`);
+                                                    }
+                                                }}
+                                            >
                                                 {/* Image */}
                                                 <div className="aspect-[4/5] bg-gray-100 relative overflow-hidden">
                                                     <img src={imageUrl} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -221,9 +233,26 @@ const ProductListing = () => {
                                                         <span className="text-xs text-gray-400 ml-1">({Math.floor(Math.random() * 50) + 10})</span>
                                                     </div>
 
-                                                    <Link to={`/shop/product/${product._id}`} className="w-full block text-center py-2 rounded-lg border border-emerald-100 text-emerald-800 text-sm font-bold hover:bg-emerald-600 hover:text-white transition-colors">
-                                                        View Details
-                                                    </Link>
+                                                    <div className="grid grid-cols-2 gap-2">
+                                                        <button
+                                                            onClick={(e) => {
+                                                                e.stopPropagation();
+                                                                addToCartWithDefault(product._id);
+                                                            }}
+                                                            className="w-full py-2 rounded-lg border border-emerald-100 text-emerald-800 text-sm font-bold hover:bg-emerald-600 hover:text-white transition-colors"
+                                                        >
+                                                            Add to Cart
+                                                        </button>
+                                                        <button
+                                                            onClick={(e) => {
+                                                                e.stopPropagation();
+                                                                buyNow(product._id);
+                                                            }}
+                                                            className="w-full py-2 rounded-lg bg-[#2c5282] text-white text-sm font-bold hover:bg-[#1a365d] transition-colors"
+                                                        >
+                                                            Buy Now
+                                                        </button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         );

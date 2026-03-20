@@ -1,20 +1,24 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import ShopLayout from '../../Components/Shop/ShopLayout';
 import { ShopContext } from '../../context/ShopContext';
 
 const ProductDetails = () => {
     const { id } = useParams();
-    const { products, backendUrl, addToCart } = useContext(ShopContext);
+    const { products, backendUrl, addToCart, buyNow, toggleWishlist, isInWishlist } = useContext(ShopContext);
     const [selectedImg, setSelectedImg] = useState('');
     const [selectedSize, setSelectedSize] = useState('');
 
+    const realProduct = products?.find(p => p._id === id);
+
     useEffect(() => {
         setSelectedImg('');
-        setSelectedSize('');
-    }, [id]);
-
-    const realProduct = products?.find(p => p._id === id);
+        if (realProduct?.sizes?.length) {
+            setSelectedSize(realProduct.sizes[0]);
+        } else {
+            setSelectedSize('Standard');
+        }
+    }, [id, realProduct]);
 
     let product;
 
@@ -114,15 +118,24 @@ const ProductDetails = () => {
                             </div>
                         </div>
 
-                        <div className="flex gap-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                             <button 
-                                onClick={() => addToCart(product.id, selectedSize)}
-                                className="flex-1 bg-[#2c5282] text-white py-4 rounded-xl font-bold text-lg hover:bg-[#1a365d] shadow-lg transform active:scale-95 transition-all"
+                                onClick={() => addToCart(product.id, selectedSize || product.features?.[0] || 'Standard')}
+                                className="sm:col-span-1 bg-[#2c5282] text-white py-4 rounded-xl font-bold text-lg hover:bg-[#1a365d] shadow-lg transform active:scale-95 transition-all"
                             >
                                 Add to Cart
                             </button>
-                            <button className="px-6 py-4 rounded-xl border-2 border-gray-200 hover:border-gray-400 hover:bg-gray-50 transition-all focus:outline-none focus:ring-2 focus:ring-emerald-500">
-                                ❤️
+                            <button
+                                onClick={() => buyNow(product.id, selectedSize || product.features?.[0] || 'Standard')}
+                                className="sm:col-span-1 bg-emerald-700 text-white py-4 rounded-xl font-bold text-lg hover:bg-emerald-800 shadow-lg transform active:scale-95 transition-all"
+                            >
+                                Buy Now
+                            </button>
+                            <button
+                                onClick={() => toggleWishlist(product.id)}
+                                className={`sm:col-span-1 px-6 py-4 rounded-xl border-2 transition-all focus:outline-none focus:ring-2 focus:ring-emerald-500 font-semibold ${isInWishlist(product.id) ? 'border-red-300 bg-red-50 text-red-600 hover:bg-red-100' : 'border-gray-200 hover:border-gray-400 hover:bg-gray-50 text-gray-700'}`}
+                            >
+                                {isInWishlist(product.id) ? '❤ Wishlisted' : '♡ Add to Wishlist'}
                             </button>
                         </div>
 

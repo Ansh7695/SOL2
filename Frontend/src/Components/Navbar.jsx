@@ -1,12 +1,12 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { Search, Menu, X, ShoppingBag, User } from "lucide-react"; // icons
+import { Search, Menu, X, ShoppingBag, User, Heart } from "lucide-react"; // icons
 import { Assets } from "../assets/Assets";
 import { ShopContext } from "../context/ShopContext";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { getCartCount, navigate, token, setToken, setCartItems } = useContext(ShopContext);
+  const { getCartCount, getWishlistCount, navigate, token, setToken, setCartItems } = useContext(ShopContext);
 
   const logout = () => {
     navigate('/login')
@@ -57,10 +57,16 @@ const Navbar = () => {
                 <div className="flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-gray-500 rounded">
                   <p onClick={() => navigate('/profile')} className="cursor-pointer hover:text-black">My Profile</p>
                   <p onClick={() => navigate('/orders')} className="cursor-pointer hover:text-black">Orders</p>
+                  <p onClick={() => navigate('/wishlist')} className="cursor-pointer hover:text-black">Wishlist</p>
                   <p onClick={logout} className="cursor-pointer hover:text-black">Logout</p>
                 </div>
               </div>}
           </div>
+
+          <Link to='/wishlist' className="relative">
+            <Heart className="w-5 h-5 min-w-5 text-gray-700 hover:text-green-600" />
+            <p className="absolute right-[-5px] bottom-[-5px] w-4 text-center leading-4 bg-black text-white aspect-square rounded-full text-[8px]">{getWishlistCount()}</p>
+          </Link>
 
           <Link to='/cart' className="relative">
             <ShoppingBag className="w-5 h-5 min-w-5 text-gray-700 hover:text-green-600" />
@@ -92,6 +98,7 @@ const Navbar = () => {
             <Link to="/blogs" onClick={() => setIsOpen(false)} className="hover:text-green-600 cursor-pointer">Blogs</Link>
             <Link to="/publications" onClick={() => setIsOpen(false)} className="hover:text-green-600 cursor-pointer">Publications</Link>
             <Link to="/marketplace" onClick={() => setIsOpen(false)} className="hover:text-green-600 cursor-pointer">Our Marketplace</Link>
+            <Link to="/wishlist" onClick={() => setIsOpen(false)} className="hover:text-green-600 cursor-pointer">Wishlist</Link>
             <li className="cursor-pointer">
               <span className="hover:text-green-600">Programs</span>
               <ul className="pl-4 mt-2 border-l-2 border-gray-200">

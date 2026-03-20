@@ -64,7 +64,7 @@ const Card = ({ product, position, dragX, handleDragStart, handleDragEnd, handle
 };
 
 const ShopLanding = () => {
-    const { products, wishlistItems, addToWishlist, backendUrl } = useContext(ShopContext);
+    const { products, backendUrl, addToCartWithDefault, buyNow } = useContext(ShopContext);
     const [topSellingProducts, setTopSellingProducts] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isDragging, setIsDragging] = useState(false);
@@ -261,11 +261,21 @@ const ShopLanding = () => {
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
                         {randomProducts.map(product => {
-                            const imageUrl = product.image && product.image.length > 0
-                                ? `${backendUrl}/images/${product.image[0]}`
-                                : "https://via.placeholder.com/300";
+                            let imageUrl = "https://via.placeholder.com/300";
+                            if (product.image && product.image.length > 0) {
+                                imageUrl = product.image[0].startsWith('http')
+                                    ? product.image[0]
+                                    : `${backendUrl}/images/${product.image[0]}`;
+                            }
                             return (
-                                <ProductCard key={product._id} {...product} image={imageUrl} id={product._id} />
+                                <ProductCard
+                                    key={product._id}
+                                    {...product}
+                                    image={imageUrl}
+                                    id={product._id}
+                                    onAddToCart={addToCartWithDefault}
+                                    onBuyNow={buyNow}
+                                />
                             )
                         })}
                     </div>

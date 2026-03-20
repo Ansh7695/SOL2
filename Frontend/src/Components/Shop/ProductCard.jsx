@@ -1,10 +1,27 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-const ProductCard = ({ id, name, price, image, category, artisan }) => {
+const ProductCard = ({ id, name, price, image, category, artisan, onBuyNow, onAddToCart }) => {
+    const navigate = useNavigate();
+
+    const openDetails = () => {
+        navigate(`/shop/product/${id}`);
+    };
+
     return (
-        <div className="group bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden flex flex-col h-full">
-            <div className="relative overflow-hidden aspect-[4/3]">
+        <div
+            className="group bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden flex flex-col h-full"
+            onClick={openDetails}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    openDetails();
+                }
+            }}
+        >
+            <div className="relative overflow-hidden aspect-[4/3] cursor-pointer">
                 <img
                     src={image}
                     alt={name}
@@ -21,18 +38,34 @@ const ProductCard = ({ id, name, price, image, category, artisan }) => {
                         Made by <span className="text-[#5F9EA0] font-medium">{artisan}</span>
                     </span>
                 </div>
-                <h3 className="text-lg font-bold text-gray-800 mb-2 line-clamp-2 group-hover:text-[#5F9EA0] transition-colors">
+                <h3 className="text-lg font-bold text-gray-800 mb-2 line-clamp-2 group-hover:text-[#5F9EA0] transition-colors cursor-pointer">
                     {name}
                 </h3>
 
-                <div className="mt-auto flex items-center justify-between pt-4 border-t border-gray-50">
-                    <span className="text-xl font-bold text-gray-900">₹{price}</span>
-                    <Link
-                        to={`/shop/product/${id}`}
-                        className="bg-[#2c5282] text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#1a365d] transition-colors shadow-md hover:shadow-lg transform active:scale-95"
-                    >
-                        View Details
-                    </Link>
+                <div className="mt-auto pt-4 border-t border-gray-50 space-y-3">
+                    <div className="flex items-center justify-between">
+                        <span className="text-xl font-bold text-gray-900">₹{price}</span>
+                    </div>
+                    <div className="grid grid-cols-2 gap-2">
+                        <button
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                onAddToCart?.(id);
+                            }}
+                            className="w-full bg-white border border-[#2c5282] text-[#2c5282] px-3 py-2 rounded-lg text-sm font-medium hover:bg-[#2c5282] hover:text-white transition-colors"
+                        >
+                            Add to Cart
+                        </button>
+                        <button
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                onBuyNow?.(id);
+                            }}
+                            className="w-full bg-[#2c5282] text-white px-3 py-2 rounded-lg text-sm font-medium hover:bg-[#1a365d] transition-colors shadow-md hover:shadow-lg transform active:scale-95"
+                        >
+                            Buy Now
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

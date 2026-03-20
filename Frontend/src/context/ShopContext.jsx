@@ -13,6 +13,7 @@ const ShopContextProvider = (props) => {
     const [search, setSearch] = useState('');
     const [showSearch, setShowSearch] = useState(false);
     const [cartItems, setCartItems] = useState({});
+    const [wishlistItems, setWishlistItems] = useState([]);
     const [products, setProducts] = useState([]);
     const [token, setToken] = useState('');
     const navigate = useNavigate();
@@ -21,7 +22,7 @@ const ShopContextProvider = (props) => {
 
         if (!size) {
             toast.error('Select Product Size');
-            return;
+            return false;
         }
 
         let cartData = structuredClone(cartItems);
@@ -48,7 +49,63 @@ const ShopContextProvider = (props) => {
             }
         }
 
+        return true;
+
     }
+
+    const getDefaultSizeForProduct = (product) => {
+        if (product?.sizes && Array.isArray(product.sizes) && product.sizes.length > 0) {
+            return product.sizes[0];
+        }
+        return 'Standard';
+    }
+
+    const addToCartWithDefault = async (itemId) => {
+        const selectedProduct = products.find((product) => product._id === itemId);
+        const defaultSize = getDefaultSizeForProduct(selectedProduct);
+        await addToCart(itemId, defaultSize);
+    }
+
+    const buyNow = async (itemId, size) => {
+        const selectedProduct = products.find((product) => product._id === itemId);
+        const chosenSize = size || getDefaultSizeForProduct(selectedProduct);
+        const added = await addToCart(itemId, chosenSize);
+        if (added) {
+            navigate('/place-order');
+        }
+    }
+
+    const addToWishlist = (itemId) => {
+        setWishlistItems((prev) => {
+            if (prev.includes(itemId)) {
+                return prev;
+            }
+            toast.success('Added to wishlist!');
+            return [...prev, itemId];
+        });
+    }
+
+    const removeFromWishlist = (itemId) => {
+        setWishlistItems((prev) => {
+            if (!prev.includes(itemId)) {
+                return prev;
+            }
+            toast.info('Removed from wishlist');
+            return prev.filter((id) => id !== itemId);
+        });
+    }
+
+    const toggleWishlist = (itemId) => {
+        if (wishlistItems.includes(itemId)) {
+            removeFromWishlist(itemId);
+            return;
+        }
+        addToWishlist(itemId);
+    }
+
+    const isInWishlist = (itemId) => wishlistItems.includes(itemId);
+
+    const getWishlistCount = () => wishlistItems.length;
 
     const getCartCount = () => {
         let totalCount = 0;
@@ -133,6 +190,22 @@ const ShopContextProvider = (props) => {
     }, [])
 
     useEffect(() => {
+        const savedWishlist = localStorage.getItem('wishlistItems');
+        if (savedWishlist) {
+            try {
+                setWishlistItems(JSON.parse(savedWishlist));
+            } catch (error) {
+                console.log(error);
+                setWishlistItems([]);
+            }
+        }
+    }, [])
+
+    useEffect(() => {
+        localStorage.setItem('wishlistItems', JSON.stringify(wishlistItems));
+    }, [wishlistItems])
+
+    useEffect(() => {
         if (!token && localStorage.getItem('token')) {
             setToken(localStorage.getItem('token'))
             getUserCart(localStorage.getItem('token'))
@@ -145,7 +218,10 @@ const ShopContextProvider = (props) => {
         cartItems, addToCart, setCartItems,
         getCartCount, updateQuantity,
         getCartAmount, navigate, backendUrl,
-        setToken, token
+        setToken, token,
+        addToCartWithDefault, buyNow,
+        wishlistItems, addToWishlist, removeFromWishlist,
+        toggleWishlist, isInWishlist, getWishlistCount
     }
 
     return (
